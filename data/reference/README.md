@@ -1,18 +1,38 @@
-# 公开参考资料
+# Public reference data
 
-## 框架
+This directory contains the framework asset required for offline numbering and optional snapshots of public position-frequency tables. Both are local inference inputs; the tool does not submit sequences to a website.
 
-`independent_numbering_public_20261109/framework_templates.json`保存五条框架参考，来自公开PDB条目：
+## Framework asset
 
-- [6VJA](https://www.rcsb.org/structure/6VJA)：rituximab VH/VL。
-- [6XDG](https://www.rcsb.org/structure/6XDG)：REGN10987 VL。
-- [1N8Z](https://www.rcsb.org/structure/1N8Z)：Herceptin VH。
-- [2VIR](https://www.rcsb.org/structure/2VIR)：小鼠VL。
+`independent_numbering_public_20261109/framework_templates.json` uses the `public_numbered_frameworks_v2` schema and contains five templates:
 
-框架的公开标准标签作为定位映射参考，CDR序列和标签已遮蔽。文件内保留来源说明。参考PDB并非抗体设计任务的新输入，也不限定新抗体的靶点。
+| Template | Public source | Chain |
+| --- | --- | --- |
+| `H` | [6VJA](https://www.rcsb.org/structure/6VJA), rituximab | VH |
+| `L` | [6VJA](https://www.rcsb.org/structure/6VJA), rituximab | Kappa VL |
+| `L_lambda` | [6XDG](https://www.rcsb.org/structure/6XDG), REGN10987 | Lambda VL |
+| `H_1N8Z` | [1N8Z](https://www.rcsb.org/structure/1N8Z), Herceptin | VH |
+| `L_lambda_mouse` | [2VIR](https://www.rcsb.org/structure/2VIR) | Mouse lambda VL |
 
-## 频率快照
+Each template provides a sequence, chain/subtype metadata, framework segment boundaries, and labels for Kabat, Chothia, IMGT, Martin, and AHo. Segment boundaries are zero-based half-open slices. Framework labels provide positional landmarks. Loop sequences are masked with `X` and loop labels are blank; the engine calculates the new input's loop labels.
 
-`abysis_frequencies_all_20261105/`与`independent_numbering_frequencies_20261109/`仅包含按体系和公共位置组织的JSON计数表，来源[abYsis](http://www.abysis.org/abysis/)。每表保留URL、获取时间、原始响应哈希、计数和分母。这是部分位置的历史快照，不保证覆盖新序列所需的所有位置；程序不会自动向网站提交序列。
+These are development references, not independent holdout controls. They neither require a new antibody to have the same target nor restrict numbering to antibodies from those complexes. Source statements remain embedded in the JSON.
 
-本仓库保留第三方资料来源，不对其另行授予软件许可。公开结构和编号资料的相关权利归其原权利方。
+## Frequency snapshots
+
+`abysis_frequencies_all_20261105/` and `independent_numbering_frequencies_20261109/` contain JSON tables named by scheme and public position, for example `kabat_H1.json`. The source is [abYsis](http://www.abysis.org/abysis/). Each table retains:
+
+- Numbering scheme, H/L-prefixed position, and organism category (`All`).
+- Per-residue counts and the total including gap observations.
+- Source URL, retrieval timestamp, and original response SHA-256.
+- The stored website display percentages.
+
+The CLI calculates percentages from counts rather than copying rounded display text. The snapshots cover a subset of positions and may not cover a new input. A missing reference is left blank and reported explicitly. Files in the first supplied frequency directory take precedence; no table is automatically refreshed or downloaded.
+
+Reference frequency describes observed amino-acid usage at a position. It does not estimate the probability that an input's numbering assignment is correct.
+
+## Provenance and rights
+
+The [initial import inventory](../../docs/provenance.json) records the imported files' SHA-256 hashes. A new run separately records the framework and frequency references actually used in `manifest.json`.
+
+Public structures, numbering labels, and frequency materials retain their original sources and applicable rights. The repository's MIT code license does not relicense third-party reference materials. No partner sequences or private experiment outputs are included in this directory.

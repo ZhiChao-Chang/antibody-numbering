@@ -1,5 +1,13 @@
 #!/usr/bin/env python3
-"""Own offline anchor numbering; public per-position frequency tables only."""
+"""Batch FASTA entry point for the independent offline numbering engine.
+
+Execution stages: parse and normalize records, load public frameworks, number
+each valid domain in five schemes, optionally annotate public position counts,
+then export residue tables and provenance. No sequence is submitted to a server.
+
+The mathematical numbering rules live in src/antibody_numbering/engine.py;
+this script handles input/output, reference-frequency lookup, and run records.
+"""
 from pathlib import Path
 from collections import Counter
 from datetime import datetime, timezone
@@ -9,15 +17,25 @@ import hashlib
 import json
 import sys
 
+# Resolve defaults from the checkout, so callers may run this script from any
+# working directory. Source imports require no package installation.
 ROOT=Path(__file__).resolve().parents[1]
 if (ROOT/'src').exists():sys.path.insert(0,str(ROOT/'src'))
 from antibody_numbering.engine import AnchorNumberer,SCHEMES
 
 
-def sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+def sha(path):
+    """Fingerprint exact file bytes for the run's provenance manifest."""
+    return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
 def read_fasta(path):
+    """Read FASTA records and preserve raw-to-normalized residue correspondence.
+
+    Stable internal record IDs distinguish duplicate headers without deduplicating
+    input sequences. Header text is retained verbatim after the leading '>'.
+    Malformed FASTA raises an error; invalid sequence records receive skip status.
+    """
     records=[]
     for line in Path(path).read_text(encoding='utf-8-sig').splitlines():
         line=line.strip()
@@ -29,10 +47,15 @@ def read_fasta(path):
             if not records:raise ValueError('Sequence occurs before a FASTA identifier')
             records[-1]['raw_sequence']+=''.join(line.split())
     if not records:raise ValueError('No FASTA input records')
+    # source_indices maps each normalized residue back to its one-based offset
+    # in the concatenated original sequence, counting '-' characters as positions.
+    # Whitespace is removed during parsing and is not a residue coordinate.
     for r in records:
         raw=r['raw_sequence'].upper()
         r['source_indices']=[i+1 for i,aa in enumerate(raw)if aa!='-']
         r['normalized_sequence']=raw.replace('-','').replace('?','X')
+        # '*' in a sequence skips that record; a '*' in a FASTA header has no
+        # effect. Unknown X and '?' are allowed, but no residue is imputed.
         r['status']=('skipped_stop_character'if'*'in raw else
                      'skipped_invalid_character'if set(raw)-set('ACDEFGHIKLMNPQRSTVWYX?-')else
                      'skipped_empty_sequence'if not r['normalized_sequence']else'ready')
@@ -40,8 +63,22 @@ def read_fasta(path):
 
 
 class FrequencyTables:
-    def __init__(self,roots):self.roots=roots;self.cache={};self.used={}
+    """Read optional local count snapshots; never influence numbering decisions.
+
+    cache stores loaded/missing (scheme, position) tables for this process.
+    used records the exact reference files accessed, including their byte hashes.
+    An empty roots list is valid and simply leaves frequency values unavailable.
+    """
+
+    def __init__(self,roots):
+        """Retain the caller's directory precedence and start empty lookup caches."""
+        self.roots=roots;self.cache={};self.used={}
     def lookup(self,scheme,position,aa):
+        """Return (percentage_or_blank, status, reference_path_or_blank).
+
+        A missing reference is distinct from a measured zero frequency. Unknown
+        amino acids and unmapped positions are explicitly left unannotated.
+        """
         if not position:return '', 'unmapped_position', ''
         if aa=='X':return '', 'unknown_residue', ''
         key=(scheme,position)
@@ -59,10 +96,15 @@ class FrequencyTables:
         if ref is None:return '', 'missing_frequency_reference', ''
         d,path=ref
         if not d['total_including_gap']:return '', 'empty_reference', str(path)
+        # The denominator includes gap counts in the public All-organism table.
+        # This observed frequency is not a probability that the numbering is right.
         return 100*d['counts'][aa]/d['total_including_gap'],'public_position_frequency',str(path)
 
 
 def main():
+    """Run one batch and export mappings, processing summaries, and provenance."""
+    # Stage 1: parse options. Frameworks default to the bundled JSON; frequency
+    # annotation remains opt-in through one or more --frequency-cache arguments.
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--input',required=True,type=Path)
     p.add_argument('--output',required=True,type=Path)
@@ -71,26 +113,37 @@ def main():
         help='Public framework JSON; defaults to the bundled project asset: %(default)s')
     p.add_argument('--frequency-cache',action='append',type=Path,default=[])
     args=p.parse_args()
+    # A fresh directory protects existing scientific outputs from accidental reuse.
     assert not args.output.exists(),'Use a new output directory'
     records=read_fasta(args.input);numberer=AnchorNumberer(args.frameworks);frequencies=FrequencyTables(args.frequency_cache)
     args.output.mkdir(parents=True)
     columns=['record_id','header','scheme','chain_type','raw_index','normalized_index','input_residue','model_residue','position','status','frequency_percent','frequency_status','frequency_reference','backend']
     summaries=[];predictions={};counts=Counter();missing=set();rowcount=0
+    # Stage 2: process each record once. The engine returns all five schemes;
+    # the CSV expands them into one row per normalized residue per scheme.
     with (args.output/'numbering_with_frequencies.csv').open('w',newline='')as f:
         writer=csv.DictWriter(f,fieldnames=columns);writer.writeheader()
         for record in records:
             if record['status']!='ready':
+                # Skipped records remain visible in summaries and the input ledger,
+                # even though they produce no residue-level numbering rows.
                 for sc in SCHEMES:summaries.append({'record_id':record['record_id'],'scheme':sc,'status':record['status'],'numbered_residues':0})
                 continue
             seq=record['normalized_sequence'];result=numberer.number(seq);predictions[record['record_id']]=result
             for sc in SCHEMES:
                 value=result['schemes'][sc]
+                # The unclassified engine result uses blank lists; classified
+                # results carry per-scheme dictionaries and possible failure notes.
                 if isinstance(value,list):positions=value;status='unclassified'
                 else:positions=value['positions'];status=value['status']
                 assert len(positions)==len(seq)
+                # Within a record/scheme, every assigned label must be unique.
+                # Blank labels are permitted for domain-external or partial output.
                 mapped=[x for x in positions if x];assert len(mapped)==len(set(mapped)),(record['record_id'],sc,'duplicate_position')
                 counts[sc+':'+status]+=1
                 summaries.append({'record_id':record['record_id'],'scheme':sc,'status':status,'numbered_residues':len(mapped)})
+                # Frequency lookup follows numbering and cannot change the label.
+                # i is zero-based internally; exported indices below are one-based.
                 for i,(aa,position)in enumerate(zip(seq,positions)):
                     frequency,fstatus,source=frequencies.lookup(sc,position,aa)
                     if fstatus=='missing_frequency_reference':missing.add((sc,position))
@@ -100,12 +153,17 @@ def main():
                         'status':status if position or status!='numbered'else'unmapped_position','frequency_percent':frequency,
                         'frequency_status':fstatus,'frequency_reference':source,'backend':'own_anchor_region_v1'})
                     rowcount+=1
+    # Stage 3: save machine-readable summaries and full intermediate results.
+    # The ledger includes the original input sequences and is private run output.
     with (args.output/'records_summary.csv').open('w',newline='')as f:
         writer=csv.DictWriter(f,fieldnames=['record_id','scheme','status','numbered_residues']);writer.writeheader();writer.writerows(summaries)
     def save(name,value):(args.output/name).write_text(json.dumps(value,ensure_ascii=False,indent=2,allow_nan=False)+'\n')
     save('input_ledger.json',records);save('backend_outputs.json',predictions);save('missing_frequency_positions.json',sorted(missing))
     import inspect
     engine_path=Path(inspect.getfile(AnchorNumberer))
+    # Stage 4: fingerprint code, input, frameworks, and every frequency table used.
+    # FINISHED_REQUIRES_AUDIT means execution completed, not that independent
+    # reference validation has been performed on these newly supplied sequences.
     manifest={'phase':'OFFLINE_NUMBERING_FINISHED_REQUIRES_AUDIT','created_at_utc':datetime.now(timezone.utc).isoformat(),
         'backend':'Own anchor detection, framework alignment and computed five-scheme loop rules',
         'inference_uses_anarci_or_anarcii':False,'inference_uses_query_reference_cache':False,'inference_uses_network':False,

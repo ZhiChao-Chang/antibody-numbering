@@ -152,6 +152,8 @@ The five public templates comprise two VH and three VL frameworks from **6VJA, 6
 
 Inference uses no ANARCI/ANARCII imports, HMMER calls, neural weights, or per-query website numbering responses. No training step is required. The internal alignment score is a selection score, not a calibrated confidence estimate.
 
+For a function-by-function walkthrough, scoring details, coordinate conventions, and compatibility behavior, see the [implementation guide](docs/algorithm.md) and the annotated [core engine](src/antibody_numbering/engine.py).
+
 ## Python integration
 
 The core engine can also be called from a Python process. Run this example from the repository root:
@@ -215,5 +217,7 @@ Run manifests describe the assets used in each invocation. The provenance invent
 ## Reference data and license
 
 Framework sources: [6VJA](https://www.rcsb.org/structure/6VJA), [6XDG](https://www.rcsb.org/structure/6XDG), [1N8Z](https://www.rcsb.org/structure/1N8Z), and [2VIR](https://www.rcsb.org/structure/2VIR). Optional position-frequency snapshots originate from [abYsis](http://www.abysis.org/abysis/); each table retains its source URL, retrieval timestamp, counts, and response hash.
+
+The [reference-data guide](data/reference/README.md) documents the framework schema, table fields, and source provenance.
 
 The original source code is available under the [MIT License](LICENSE). Public structures and third-party reference data retain their original attribution and applicable rights; the code license does not relicense those materials.
