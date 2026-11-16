@@ -12,6 +12,7 @@
 </p>
 
 <p align="center">
+  <a href="https://zhichao-chang.github.io/antibody-numbering/">Online tool</a> ·
   <a href="#quick-start">Quick start</a> ·
   <a href="#usage">Usage</a> ·
   <a href="#outputs">Outputs</a> ·
@@ -30,6 +31,16 @@ Antibody Numbering assigns **Kabat, Chothia, IMGT, Martin, and AHo** positions t
 | **Residue traceability** | Retain input identifiers, original indices, normalized indices, and processing status. |
 | **Offline execution** | Run on a CPU with no third-party Python packages, model downloads, or sequence submissions. |
 | **Optional reference frequencies** | Annotate positions using bundled snapshots of public amino-acid counts. |
+
+## Online tool
+
+**[Open the browser application →](https://zhichao-chang.github.io/antibody-numbering/)**
+
+Paste one or multiple FASTA records, select a record and scheme, and download the complete CSV or ZIP. Each record should contain one VH or VL variable domain. No installation or Python knowledge is needed.
+
+The page runs the **same Python CLI and engine** in a browser Web Worker using self-hosted [Pyodide](https://pyodide.org/) 314.0.8. The initial runtime download is approximately 13 MB. All five schemes are computed locally; sequences are not submitted to a numbering service. Input and results live in page memory until cleared, replaced, or the tab is closed. Runtime and algorithm files are served as static GitHub Pages assets.
+
+The browser uses the bundled default frameworks, with reference-frequency annotation disabled. It preserves the command-line processing statuses and output files; run-specific paths and timestamps in the manifest reflect the browser filesystem. See [web/README.md](web/README.md) for deployment and verification details.
 
 ## Quick start
 

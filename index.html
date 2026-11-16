@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Paste single or multi-record FASTA to number antibody variable domains locally in your browser, using five standard schemes.">
+  <meta name="theme-color" content="#f8f9fc">
+  <title>Antibody Numbering · 在线抗体编号</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="web/styles.css">
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="./">Antibody Numbering<span>在线抗体编号</span></a><a href="https://github.com/ZhiChao-Chang/antibody-numbering">GitHub ↗</a></header>
+  <main>
+    <section class="hero"><p class="eyebrow">FASTA → FIVE NUMBERING SCHEMES</p><h1>粘贴序列，<br>获得抗体编号。</h1><p class="intro">单条或多条抗体可变域序列，一次输出 IMGT、Kabat、Chothia、Martin 和 AHo 编号。</p><div class="badges"><span>无需安装</span><span>浏览器内计算</span><span>沿用命令行算法</span></div></section>
+    <section class="card" aria-labelledby="input-title"><div class="section-head"><div><p class="eyebrow">01 · INPUT</p><h2 id="input-title">输入 FASTA</h2></div><div class="actions"><button id="example" type="button">载入公开示例</button><label class="button">打开 FASTA 文件<input id="file" type="file" accept=".fa,.fasta,.faa,.txt" hidden></label></div></div><p class="help">每条记录是一条 VH 或 VL 可变域；多条记录用各自的 <code>&gt;名称</code> 分隔。</p><label for="fasta" class="sr-only">单条或多条 FASTA 序列</label><textarea id="fasta" spellcheck="false" placeholder=">my_antibody_VH&#10;EVQLVESGGGLVQPGGSLRLSCAAS…&#10;>my_antibody_VL&#10;DIQMTQSPSSLSASVGDRVTITC…"></textarea><div class="run-row"><span id="input-count">等待输入</span><div class="actions"><button id="clear" type="button">清空</button><button id="cancel" type="button" hidden>取消计算</button><button id="run" class="primary" type="button">开始编号</button></div></div><div id="status" class="status" role="status" aria-live="polite">首次运行会下载约 13 MB 的 Python 环境和算法文件。输入序列保留在当前浏览器中。</div></section>
+    <section id="results" class="card" hidden aria-labelledby="result-title"><div class="section-head"><div><p class="eyebrow">02 · RESULTS</p><h2 id="result-title">编号结果</h2></div><div class="actions"><button id="download-csv" type="button">下载完整 CSV</button><button id="download-zip" class="primary" type="button">下载全部结果 ZIP</button></div></div><div id="summary" class="summary"></div><div class="result-controls"><label>序列<select id="record"></select></label><label>编号体系<select id="scheme"><option value="imgt">IMGT</option><option value="kabat">Kabat</option><option value="chothia">Chothia</option><option value="martin">Martin</option><option value="aho">AHo</option></select></label><p id="record-status"></p></div><div id="residue-strip" class="residue-strip" aria-label="逐残基编号"></div><p id="legend" class="help"></p><details><summary>查看逐残基数据表</summary><div class="table-scroll"><table><thead><tr><th>原始位置</th><th>归一化位置</th><th>氨基酸</th><th>标准编号</th><th>状态</th></tr></thead><tbody id="rows"></tbody></table></div></details><p class="help">默认输出编号，不附加氨基酸参考频率。ZIP 包含全部五种体系的 CSV、处理状态、输入记录和算法版本清单。</p></section>
+    <section class="notes"><div><h2>输入什么？</h2><p>抗体重链或轻链的可变域氨基酸序列。一个 FASTA 可以同时包含多条 VH、VL；每条序列独立编号。</p></div><div><h2>在哪里计算？</h2><p>网页把公开的 Python 算法加载到浏览器的独立工作线程。序列与输出只保存在当前页面内存，关闭或刷新后清除。</p></div><div><h2>如何阅读？</h2><p>上方选择序列与编号体系；插入位点保留其完整标签。未识别、未映射或不支持的记录会显示处理状态。</p></div></section>
+  </main>
+  <footer><span>Antibody Numbering · Open source · MIT</span><a href="https://github.com/ZhiChao-Chang/antibody-numbering#how-it-works">算法与验证说明 ↗</a></footer>
+  <script type="module" src="web/app.js"></script>
+</body></html>
