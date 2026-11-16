@@ -3,7 +3,8 @@ let worker, requestId=0, output=null, busy=false;
 const statuses={numbered:'已编号',unclassified:'未识别为支持的抗体可变域',unmapped_position:'未映射位置',skipped_stop_character:'跳过：包含终止符 *',skipped_invalid_character:'跳过：包含无效字符',skipped_empty_sequence:'跳过：空序列'};
 const describe = value => statuses[value] || value;
 function status(message, kind='') { $('status').textContent=message; $('status').className='status '+kind; }
-function setBusy(value) { busy=value; $('run').disabled=value; $('cancel').hidden=!value; $('clear').disabled=value; $('example').disabled=value; $('file').disabled=value; $('fasta').readOnly=value; }
+function showResults(value) { $('results').hidden=!value; if($('guide-number'))$('guide-number').textContent=value?'03':'02'; }
+function setBusy(value) { busy=value; $('workspace')?.setAttribute('aria-busy',String(value)); if($('open-file'))$('open-file').disabled=value; $('run').disabled=value; $('cancel').hidden=!value; $('clear').disabled=value; $('example').disabled=value; $('file').disabled=value; $('fasta').readOnly=value; }
 function updateCount() { const text=$('fasta').value; const n=(text.match(/^\s*>/gm)||[]).length; $('input-count').textContent=text.trim()?`${n} 条 FASTA 记录 · ${text.length.toLocaleString()} 字符`:'等待输入'; }
 function save(name, value, type='text/plain;charset=utf-8') { const link=document.createElement('a'), url=URL.createObjectURL(new Blob([value],{type})); link.href=url; link.download=name; link.click(); setTimeout(()=>URL.revokeObjectURL(url),1500); }
 function setupWorker() {
@@ -17,7 +18,7 @@ function setupWorker() {
   worker.onerror=event=>{setBusy(false);status('浏览器计算环境加载失败：'+event.message+'。请检查网络后重试。','error');worker?.terminate();worker=null;};
 }
 function renderResult() {
-  $('results').hidden=false; $('record').replaceChildren();
+  showResults(true); $('record').replaceChildren();
   for(const record of output.records) { const option=document.createElement('option'); option.value=record.record_id; option.textContent=record.record_id+' · '+record.header; $('record').append(option); }
   const chosen=output.summaries.filter(x=>x.scheme==='imgt');
   const mapped=chosen.filter(x=>x.status==='numbered').length;
@@ -50,11 +51,12 @@ $('fasta').addEventListener('input',updateCount);
 $('run').addEventListener('click',()=>{
   const fasta=$('fasta').value;if(!fasta.trim()){status('请先粘贴 FASTA 序列，或载入公开示例。','error');$('fasta').focus();return;}
   if(!fasta.trimStart().startsWith('>')){status('FASTA 每条记录需要以 >名称 开头，请先补上序列名称。','error');return;}
-  requestId++;output=null;$('results').hidden=true;setBusy(true);status('准备浏览器计算环境…');if(!worker)setupWorker();worker.postMessage({id:requestId,fasta});
+  requestId++;output=null;showResults(false);setBusy(true);status('准备浏览器计算环境…');if(!worker)setupWorker();worker.postMessage({id:requestId,fasta});
 });
 $('cancel').addEventListener('click',()=>{requestId++;worker?.terminate();worker=null;setBusy(false);status('已取消；输入保留，可重新开始。');});
-$('clear').addEventListener('click',()=>{worker?.terminate();worker=null;requestId++;output=null;$('fasta').value='';$('results').hidden=true;updateCount();status('已清空输入、结果和浏览器计算内存。');});
+$('clear').addEventListener('click',()=>{worker?.terminate();worker=null;requestId++;output=null;$('fasta').value='';showResults(false);updateCount();status('已清空输入、结果和浏览器计算内存。');});
 $('example').addEventListener('click',async()=>{try{const r=await fetch(new URL('../examples/6vja_fv.fasta',import.meta.url));if(!r.ok)throw Error(r.status);$('fasta').value=await r.text();updateCount();status('已载入 PDB 6VJA 公开的 rituximab VH / VL 两条示例序列。');}catch(e){status('示例加载失败：'+e.message,'error');}});
+$('open-file')?.addEventListener('click',()=>$('file').click());
 $('file').addEventListener('change',async event=>{const file=event.target.files[0];if(file){$('fasta').value=await file.text();updateCount();status('已在浏览器内读取 '+file.name+'，点击“开始编号”运行。');}event.target.value='';});
 $('record').addEventListener('change',renderRecord);$('scheme').addEventListener('change',renderRecord);
 $('download-csv').addEventListener('click',()=>{if(output)save('numbering_with_frequencies.csv',output.files['numbering_with_frequencies.csv'],'text/csv;charset=utf-8');});
