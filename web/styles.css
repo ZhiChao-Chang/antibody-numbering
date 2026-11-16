@@ -253,3 +253,11 @@ footer > div { display: flex; gap: 25px; }
 }
 @media (max-width: 360px) { .scheme-overview > div span { font-size: 15px; } .hero-lead { font-size: 21px; } .mapping-residues b { font-size: 18px; } .result-controls { grid-template-columns: minmax(0, 1fr) 88px; } }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
+
+/* Keep processing outcomes separate from numbering scheme names. */
+.scheme-status-overview { margin: -7px 0 28px; }
+.scheme-status-overview > p { font-size: 12px; line-height: 1.85; }
+.scheme-statuses { display: flex; flex-wrap: wrap; gap: 12px 30px; padding: 0; margin: 15px 0 0; list-style: none; }
+.scheme-statuses li { display: flex; align-items: baseline; gap: 12px; font-size: 13px; }
+.scheme-statuses strong { font-size: 14px; font-weight: 600; font-variant-numeric: tabular-nums; }
+@media(max-width:700px) { .scheme-status-overview > p { font-size: 11px; } .scheme-statuses { gap: 12px 22px; } .scheme-statuses li { font-size: 12px; } .scheme-statuses strong { font-size: 13px; } }

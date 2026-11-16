@@ -2,6 +2,7 @@ const $ = id => document.getElementById(id);
 let worker, requestId=0, output=null, busy=false;
 const statuses={numbered:'已编号',unclassified:'未识别为支持的抗体可变域',unmapped_position:'未映射位置',skipped_stop_character:'跳过：包含终止符 *',skipped_invalid_character:'跳过：包含无效字符',skipped_empty_sequence:'跳过：空序列'};
 const describe = value => statuses[value] || value;
+const schemeNames={imgt:'IMGT',kabat:'Kabat',chothia:'Chothia',martin:'Martin',aho:'AHo'};
 function status(message, kind='') { $('status').textContent=message; $('status').className='status '+kind; }
 function showResults(value) { $('results').hidden=!value; if($('guide-number'))$('guide-number').textContent=value?'03':'02'; }
 function setBusy(value) { busy=value; $('workspace')?.setAttribute('aria-busy',String(value)); if($('open-file'))$('open-file').disabled=value; $('run').disabled=value; $('cancel').hidden=!value; $('clear').disabled=value; $('example').disabled=value; $('file').disabled=value; $('fasta').readOnly=value; }
@@ -20,12 +21,27 @@ function setupWorker() {
 function renderResult() {
   showResults(true); $('record').replaceChildren();
   for(const record of output.records) { const option=document.createElement('option'); option.value=record.record_id; option.textContent=record.record_id+' · '+record.header; $('record').append(option); }
-  const chosen=output.summaries.filter(x=>x.scheme==='imgt');
-  const mapped=chosen.filter(x=>x.status==='numbered').length;
+  // Count a record as successful only when every scheme reports success.
+  // Review records exclude skipped inputs and include any non-successful scheme.
+  const byRecord=new Map();
+  for(const row of output.summaries) {
+    if(!byRecord.has(row.record_id))byRecord.set(row.record_id,new Map());
+    byRecord.get(row.record_id).set(row.scheme,row.status);
+  }
+  const mapped=output.records.filter(r=>r.status==='ready'&&Object.keys(schemeNames).every(sc=>byRecord.get(r.record_id)?.get(sc)==='numbered')).length;
   const skipped=output.records.filter(x=>x.status!=='ready').length;
   $('summary').replaceChildren();
-  for(const [n,text] of [[output.records.length,'输入记录'],[mapped,'IMGT 已编号'],[output.records.length-mapped-skipped,'其他编号状态'],[skipped,'跳过记录']]) {
-    const div=document.createElement('div');div.className='stat';const strong=document.createElement('strong');strong.textContent=n;const span=document.createElement('span');span.textContent=text;div.append(strong,span);$('summary').append(div);
+  for(const [n,text,note] of [[output.records.length,'输入记录','本次输入的全部FASTA记录'],[mapped,'五种体系均已编号','五种体系均返回已编号状态的记录'],[output.records.length-mapped-skipped,'需检查记录','至少一种体系返回未识别、不支持或其他非成功状态；不含跳过记录'],[skipped,'跳过记录','因序列字符或空序列等输入问题而跳过的记录']]) {
+    const div=document.createElement('div');div.className='stat';div.title=note;const strong=document.createElement('strong');strong.textContent=n;const span=document.createElement('span');span.textContent=text;div.append(strong,span);$('summary').append(div);
+  }
+  const counts=$('scheme-statuses');
+  if(counts) {
+    counts.replaceChildren();
+    for(const [scheme,name] of Object.entries(schemeNames)) {
+      const item=document.createElement('li'),text=document.createElement('span'),number=document.createElement('strong');
+      text.textContent=name;number.textContent=output.summaries.filter(r=>r.scheme===scheme&&r.status==='numbered').length+' / '+output.records.length;
+      item.append(text,number);counts.append(item);
+    }
   }
   renderRecord();
 }
