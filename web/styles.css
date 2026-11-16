@@ -261,3 +261,16 @@ footer > div { display: flex; gap: 25px; }
 .scheme-statuses li { display: flex; align-items: baseline; gap: 12px; font-size: 13px; }
 .scheme-statuses strong { font-size: 14px; font-weight: 600; font-variant-numeric: tabular-nums; }
 @media(max-width:700px) { .scheme-status-overview > p { font-size: 11px; } .scheme-statuses { gap: 12px 22px; } .scheme-statuses li { font-size: 12px; } .scheme-statuses strong { font-size: 13px; } }
+
+/* Region colors remain stable while definition membership changes. */
+.residue.cdr1 { background: #eaf3ff; border-bottom-color: #0071e3; }
+.residue.cdr2 { background: #fff1e7; border-bottom-color: #bb490b; }
+.residue.cdr3 { background: #f4eafb; border-bottom-color: #9146b3; }
+.cdr-policy { font-size: 12px; line-height: 1.85; margin-top: 18px; }
+.result-controls { grid-template-columns: minmax(0, 2fr) minmax(110px, 1fr) minmax(175px, 1.2fr); }
+.result-controls p { grid-column: 1 / -1; padding-bottom: 0; }
+@media(max-width:1000px) { .result-controls { grid-template-columns: minmax(0, 1.5fr) minmax(100px, 1fr) minmax(145px, 1.3fr); } }
+@media(max-width:700px) { .result-controls { grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); } .result-controls > label:first-child { grid-column: 1 / -1; } .cdr-policy { font-size: 11px; } }
+
+.residue.unmapped { background: #fff8d6; border-bottom-color: #9b7c00; }
+.residue.region-unknown { background: #fff; border-bottom: 2px dashed #686870; }

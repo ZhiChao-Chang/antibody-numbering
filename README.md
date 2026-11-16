@@ -40,7 +40,7 @@ Paste one or multiple FASTA records, select a record and scheme, and download th
 
 The page runs the **same Python CLI and engine** in a browser Web Worker using self-hosted [Pyodide](https://pyodide.org/) 314.0.8. The initial runtime download is approximately 13 MB. All five schemes are computed locally; sequences are not submitted to a numbering service. Input and results live in page memory until cleared, replaced, or the tab is closed. Runtime and algorithm files are served as static GitHub Pages assets.
 
-The browser uses the bundled default frameworks, with reference-frequency annotation disabled. It preserves the command-line processing statuses and output files; run-specific paths and timestamps in the manifest reflect the browser filesystem. See [web/README.md](web/README.md) for deployment and verification details.
+The browser uses the bundled default frameworks, with reference-frequency annotation disabled. CDRs are highlighted in all five views using explicit, selectable definitions. CSV downloads combine all records; ZIP downloads place each record in its own directory, with shared metadata at the top level. It preserves the command-line processing statuses and output files; run-specific paths and timestamps in the manifest reflect the browser filesystem. See [web/README.md](web/README.md) for deployment and verification details.
 
 ## Quick start
 
@@ -201,7 +201,7 @@ Run the bundled test suite without additional dependencies:
 python3 -B -S -m unittest discover -s tests -v
 ```
 
-The current suite contains **18 tests** covering alignment, insertion labels, kappa/lambda-specific rules, terminal truncation, unknown residues, negative controls, offline inference, frequency arithmetic, default framework resolution, custom reference overrides, and output-directory protection.
+The current suite contains **25 tests** covering alignment, insertion labels, kappa/lambda-specific rules, terminal truncation, unknown residues, negative controls, offline inference, frequency arithmetic, default framework resolution, custom reference overrides, output-directory protection, CDR-region projection, and safe per-sequence ZIP exports.
 
 **Current scope:** single antibody variable domains within the implemented framework and loop-length rules. Extreme loop lengths, unusual framework insertions or deletions, divergent sequences, and multidomain constructs may be rejected or assigned incorrectly. The bundled tests provide regression coverage, not a population-level accuracy estimate.
 

@@ -1,6 +1,6 @@
 const $ = id => document.getElementById(id);
 let worker, requestId=0, output=null, busy=false;
-const statuses={numbered:'已编号',unclassified:'未识别为支持的抗体可变域',unmapped_position:'未映射位置',skipped_stop_character:'跳过：包含终止符 *',skipped_invalid_character:'跳过：包含无效字符',skipped_empty_sequence:'跳过：空序列'};
+const statuses={numbered:'已编号',unsupported:'该编号体系暂不支持',unclassified:'未识别为支持的抗体可变域',unmapped_position:'未映射位置',skipped_stop_character:'跳过：包含终止符 *',skipped_invalid_character:'跳过：包含无效字符',skipped_empty_sequence:'跳过：空序列'};
 const describe = value => statuses[value] || value;
 const schemeNames={imgt:'IMGT',kabat:'Kabat',chothia:'Chothia',martin:'Martin',aho:'AHo'};
 function status(message, kind='') { $('status').textContent=message; $('status').className='status '+kind; }
@@ -9,7 +9,7 @@ function setBusy(value) { busy=value; $('workspace')?.setAttribute('aria-busy',S
 function updateCount() { const text=$('fasta').value; const n=(text.match(/^\s*>/gm)||[]).length; $('input-count').textContent=text.trim()?`${n} 条 FASTA 记录 · ${text.length.toLocaleString()} 字符`:'等待输入'; }
 function save(name, value, type='text/plain;charset=utf-8') { const link=document.createElement('a'), url=URL.createObjectURL(new Blob([value],{type})); link.href=url; link.download=name; link.click(); setTimeout(()=>URL.revokeObjectURL(url),1500); }
 function setupWorker() {
-  worker=new Worker(new URL('./numbering-worker.mjs',import.meta.url),{type:'module'});
+  worker=new Worker(new URL('./numbering-worker.mjs?v=4',import.meta.url),{type:'module'});
   worker.onmessage=({data})=>{
     if(data.id!==undefined && data.id!==requestId)return;
     if(data.type==='progress')status(data.message);
@@ -51,17 +51,28 @@ function renderRecord() {
   const rows=output.rows.filter(r=>r.record_id===id&&r.scheme===scheme);
   const summary=output.summaries.find(r=>r.record_id===id&&r.scheme===scheme);
   $('record-status').textContent=`${describe(summary?.status||'')} · ${summary?.numbered_residues||0} 个已映射残基`;
+  const rules=output.cdr_rules;
+  const requested=$('cdr-definition')?.value||'auto';
+  const definitionKey=requested==='auto'?rules?.defaults[scheme]:requested;
+  const definition=rules?.definitions[definitionKey];
+  const definitionName=definition?.label||'未提供';
+  const counts={CDR1:0,CDR2:0,CDR3:0};let unknown=0;
+  const policy=$('cdr-policy');
+  if(policy)policy.textContent=`${schemeNames[scheme]} 编号 · CDR 定义：${definitionName}`+(definition&&definition.coordinate_scheme!==scheme?'（按同一残基映射）':'');
   const strip=document.createDocumentFragment(), body=document.createDocumentFragment();
   for(const row of rows) {
     const box=document.createElement('div');box.className='residue';
-    const n=Number(row.position.match(/\d+/)?.[0]);
-    const isCdr=scheme==='imgt'&&((n>=27&&n<=38)||(n>=56&&n<=65)||(n>=105&&n<=117));
-    if(isCdr)box.classList.add('cdr');if(!row.position)box.classList.add('unmapped');
-    const aa=document.createElement('b');aa.textContent=row.model_residue;const label=document.createElement('span');label.textContent=row.position||'—';box.append(aa,label);box.title=`原始第${row.raw_index}位；归一化第${row.normalized_index}位；${describe(row.status)}`;strip.append(box);
-    const tr=document.createElement('tr');for(const v of [row.raw_index,row.normalized_index,row.model_residue,row.position||'—',describe(row.status)]) {const td=document.createElement('td');td.textContent=v;tr.append(td);}body.append(tr);
+    const region=row.position?(row.cdr_regions?.[definitionKey]??null):null;
+    if(region?.startsWith('CDR')) {box.classList.add('cdr',region.toLowerCase());counts[region]++;}
+    if(!row.position)box.classList.add('unmapped');
+    else if(region===null){unknown++;box.classList.add('region-unknown');}
+    box.dataset.region=region||'unassigned';box.dataset.normalizedIndex=row.normalized_index;
+    const aa=document.createElement('b');aa.textContent=row.model_residue;const label=document.createElement('span');label.textContent=row.position||'—';box.append(aa,label);box.title=`原始第${row.raw_index}位；归一化第${row.normalized_index}位；${describe(row.status)}；${definitionName}：${region||'区域未确定'}`;strip.append(box);
+    const tr=document.createElement('tr');for(const v of [row.raw_index,row.normalized_index,row.model_residue,row.position||'—',region==='FR'?'框架':region||'未确定',describe(row.status)]) {const td=document.createElement('td');td.textContent=v;tr.append(td);}body.append(tr);
   }
   $('residue-strip').replaceChildren(strip);$('rows').replaceChildren(body);
-  $('legend').textContent=rows.length?(scheme==='imgt'?'蓝色：IMGT CDR1（27–38）、CDR2（56–65）、CDR3（105–117）；浅色：其余位置。':'上方为当前体系逐残基编号；CDR 着色仅在 IMGT 视图启用。')+' 橙色表示未映射残基。':'此记录没有可展示的逐残基映射，请查看处理状态。';
+  $('legend').textContent=rows.length?`蓝色 CDR1：${counts.CDR1} aa；橙色 CDR2：${counts.CDR2} aa；紫色 CDR3：${counts.CDR3} aa。浅色为框架，淡黄为未映射位置。`+(unknown?` ${unknown} 个位置缺少所选CDR定义的参考映射，以虚线标出。`:''):'此记录没有可展示的逐残基映射，请查看处理状态。';
+
 }
 $('fasta').addEventListener('input',updateCount);
 $('run').addEventListener('click',()=>{
@@ -75,5 +86,6 @@ $('example').addEventListener('click',async()=>{try{const r=await fetch(new URL(
 $('open-file')?.addEventListener('click',()=>$('file').click());
 $('file').addEventListener('change',async event=>{const file=event.target.files[0];if(file){$('fasta').value=await file.text();updateCount();status('已在浏览器内读取 '+file.name+'，点击“开始编号”运行。');}event.target.value='';});
 $('record').addEventListener('change',renderRecord);$('scheme').addEventListener('change',renderRecord);
+$('cdr-definition')?.addEventListener('change',renderRecord);
 $('download-csv').addEventListener('click',()=>{if(output)save('numbering_with_frequencies.csv',output.files['numbering_with_frequencies.csv'],'text/csv;charset=utf-8');});
 $('download-zip').addEventListener('click',()=>{if(output)save('antibody_numbering_results.zip',Uint8Array.from(atob(output.zip),c=>c.charCodeAt(0)),'application/zip');});

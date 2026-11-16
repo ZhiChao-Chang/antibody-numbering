@@ -7,7 +7,7 @@
   <meta name="theme-color" content="#ffffff">
   <title>Antibody Numbering · 在线抗体编号</title>
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="web/styles.css?v=3">
+  <link rel="stylesheet" href="web/styles.css?v=4">
 </head>
 <body>
   <a class="skip-link" href="#numbering">跳到编号工具</a>
@@ -68,22 +68,23 @@
       <div id="summary" class="summary" aria-label="本次处理概况"></div>
       <div class="scheme-status-overview"><p>五种体系同时计算；下方下拉框仅切换展示。各体系成功编号数 / 输入记录数：</p><ul id="scheme-statuses" class="scheme-statuses" aria-label="各编号体系的成功记录数"></ul></div>
       <div class="result-viewer">
-        <div class="result-controls"><label>当前序列<select id="record"></select></label><label>编号体系<select id="scheme"><option value="imgt">IMGT</option><option value="kabat">Kabat</option><option value="chothia">Chothia</option><option value="martin">Martin</option><option value="aho">AHo</option></select></label><p id="record-status"></p></div>
+        <div class="result-controls"><label>当前序列<select id="record"></select></label><label>编号体系<select id="scheme"><option value="imgt">IMGT</option><option value="kabat">Kabat</option><option value="chothia">Chothia</option><option value="martin">Martin</option><option value="aho">AHo</option></select></label><label>CDR 定义<select id="cdr-definition"><option value="auto">随编号体系（默认）</option><option value="imgt">IMGT</option><option value="kabat">Kabat</option><option value="chothia">Chothia 共识（2021）</option><option value="abm">AbM</option></select></label><p id="record-status"></p></div>
+        <p id="cdr-policy" class="cdr-policy" aria-live="polite"></p>
         <div class="sequence-heading"><h3>逐残基映射</h3><span>氨基酸 / 标准位置</span></div>
         <div id="residue-strip" class="residue-strip" aria-label="逐残基编号"></div>
         <p id="legend" class="help legend"></p>
-        <details class="data-details"><summary>逐残基数据表 <span class="disclosure-icon" aria-hidden="true">＋</span></summary><div class="table-scroll"><table><thead><tr><th>原始位置</th><th>归一化位置</th><th>氨基酸</th><th>标准编号</th><th>状态</th></tr></thead><tbody id="rows"></tbody></table></div></details>
+        <details class="data-details"><summary>逐残基数据表 <span class="disclosure-icon" aria-hidden="true">＋</span></summary><div class="table-scroll"><table><thead><tr><th>原始位置</th><th>归一化位置</th><th>氨基酸</th><th>标准编号</th><th>区域</th><th>状态</th></tr></thead><tbody id="rows"></tbody></table></div></details>
       </div>
-      <div class="download-row"><div><h3>保存完整结果</h3><p>CSV 包含全部五种体系的编号；ZIP 同时保留处理状态、输入记录和版本清单。</p></div><div class="actions"><button id="download-csv" type="button">下载完整 CSV</button><button id="download-zip" class="primary" type="button">下载全部结果 ZIP <span aria-hidden="true">↓</span></button></div></div>
+      <div class="download-row"><div><h3>保存完整结果</h3><p>CSV 包含全部五种体系的编号；ZIP 按序列分目录保存，外层保留总索引与共用版本信息。</p></div><div class="actions"><button id="download-csv" type="button">下载完整 CSV</button><button id="download-zip" class="primary" type="button">下载全部结果 ZIP <span aria-hidden="true">↓</span></button></div></div>
     </section>
 
     <section id="guide" class="chapter guide-chapter" aria-labelledby="guide-title">
       <div class="chapter-heading"><span class="chapter-number" id="guide-number">02</span><h2 id="guide-title">使用说明</h2></div>
-      <div class="guide-grid"><div><span class="guide-index">输入</span><h3>VH / VL 可变域输入</h3><p>输入抗体的 VH 或 VL 氨基酸序列。一个 FASTA 可以包含多条重链、轻链记录，各自独立编号。</p></div><div><span class="guide-index">查看</span><h3>逐位点编号与 CDR 标记</h3><p>在结果中切换序列与体系；插入位点显示完整标签。IMGT 视图标出三段 CDR，便于定位。</p></div><div><span class="guide-index">保存</span><h3>CSV 与完整运行记录</h3><p>下载 CSV 查看全部映射，或用 ZIP 保存本次运行的完整文件。默认输出编号，不附加参考频率。</p></div></div>
-      <details class="method-details"><summary>计算方式与数据去向 <span class="disclosure-icon" aria-hidden="true">＋</span></summary><p>网页在浏览器的独立工作线程中运行同一套 Python 编号算法，使用仓库自带的默认框架。序列不提交到服务器；输入和结果保存在当前页面内存，清空或关闭页面后释放。未识别、未映射和不支持的情况均保留处理状态。</p><a class="text-link" href="https://github.com/ZhiChao-Chang/antibody-numbering#how-it-works">算法与验证说明 <span aria-hidden="true">↗</span></a></details>
+      <div class="guide-grid"><div><span class="guide-index">输入</span><h3>VH / VL 可变域输入</h3><p>输入抗体的 VH 或 VL 氨基酸序列。一个 FASTA 可以包含多条重链、轻链记录，各自独立编号。</p></div><div><span class="guide-index">查看</span><h3>逐位点编号与 CDR 标记</h3><p>在结果中切换序列与体系；插入位点显示完整标签。五种视图均标出三段 CDR；“CDR 定义”可随编号体系切换，也可单独选择。</p></div><div><span class="guide-index">保存</span><h3>CSV 与完整运行记录</h3><p>下载 CSV 查看全部映射，或用 ZIP 分别保存每条序列的编号、处理状态和输入记录。默认输出编号，不附加参考频率。</p></div></div>
+      <details class="method-details"><summary>计算方式与数据去向 <span class="disclosure-icon" aria-hidden="true">＋</span></summary><p>网页在浏览器的独立工作线程中运行同一套 Python 编号算法，使用仓库自带的默认框架。序列不提交到服务器；输入和结果保存在当前页面内存，清空或关闭页面后释放。未识别、未映射和不支持的情况均保留处理状态。</p><p>CDR 默认规则：IMGT、Kabat 分别采用对应定义；Chothia 和 Martin 采用 Martin 组 2021 年 Chothia 共识定义；AHo 默认将 Kabat 定义逐残基映射到 AHo 编号。可通过“CDR 定义”切换口径，当前采用的规则显示在结果上方。</p><a class="text-link" href="https://github.com/ZhiChao-Chang/antibody-numbering/blob/main/web/README.md#cdr-definitions">CDR 规则与来源 <span aria-hidden="true">↗</span></a><br><a class="text-link" href="https://github.com/ZhiChao-Chang/antibody-numbering#how-it-works">算法与验证说明 <span aria-hidden="true">↗</span></a></details>
     </section>
   </main>
   <footer class="page-width"><span>Antibody Numbering · Open source · MIT</span><div><a href="https://zhichao-chang.github.io/canine-cd20-design/">抗体设计研究 <span aria-hidden="true">↗</span></a><a href="https://github.com/ZhiChao-Chang/antibody-numbering">源代码 <span aria-hidden="true">↗</span></a></div></footer>
-  <script type="module" src="web/app.js?v=3"></script>
+  <script type="module" src="web/app.js?v=4"></script>
 </body>
 </html>
