@@ -5,7 +5,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-RELEASE = '2026.11.17.1'
+RELEASE = '2026.11.17.2'
 PATHS = (
     'src/antibody_numbering/engine.py',
     'src/antibody_numbering/__init__.py',

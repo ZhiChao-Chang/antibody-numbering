@@ -49,8 +49,26 @@ class CommandLineTests(unittest.TestCase):
             self.assertEqual(Path(manifest['public_frameworks']), custom)
             result = self.run_cli(baseline, cwd=directory)
             self.assertEqual(result.returncode, 0, result.stderr)
-            self.assertEqual((output / 'numbering_with_frequencies.csv').read_bytes(),
-                             (baseline / 'numbering_with_frequencies.csv').read_bytes())
+            self.assertEqual((output / 'numbering.csv').read_bytes(),
+                             (baseline / 'numbering.csv').read_bytes())
+
+    def test_numbering_export_columns_and_files(self):
+        with tempfile.TemporaryDirectory() as directory:
+            output = Path(directory) / 'output'
+            result = self.run_cli(output)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            with (output / 'numbering.csv').open() as stream:
+                reader = csv.DictReader(stream)
+                self.assertEqual(reader.fieldnames, [
+                    'record_id', 'header', 'scheme', 'chain_type', 'raw_index',
+                    'normalized_index', 'input_residue', 'model_residue',
+                    'position', 'status', 'backend',
+                ])
+                self.assertTrue(list(reader))
+            self.assertEqual({path.name for path in output.iterdir()}, {
+                'numbering.csv', 'records_summary.csv', 'backend_outputs.json',
+                'input_ledger.json', 'manifest.json',
+            })
 
     def test_existing_output_is_not_overwritten(self):
         with tempfile.TemporaryDirectory() as directory:

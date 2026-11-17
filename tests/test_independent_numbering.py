@@ -1,5 +1,4 @@
 from pathlib import Path
-import importlib.util
 import json
 import random
 import socket
@@ -11,8 +10,6 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'src'))
 from antibody_numbering.engine import AnchorNumberer,align,centered,loop_labels
 
-runner=ROOT/'scripts/number_antibodies_independent.py'
-spec=importlib.util.spec_from_file_location('own_numbering_runner',runner);cli=importlib.util.module_from_spec(spec);spec.loader.exec_module(cli)
 ASSETS=ROOT/'data/reference/independent_numbering_public_20261109'
 
 
@@ -101,13 +98,6 @@ class IndependentNumberingTests(unittest.TestCase):
         seqs=['A'*120,'ACDEFGHIKLMNPQRSTVWY'*6]+[''.join(rng.choices('ACDEFGHIKLMNPQRSTVWY',k=120))for _ in range(100)]
         for sequence in seqs:self.assertEqual(self.engine.number(sequence)['status'],'unclassified')
 
-    def test_frequency_is_observed_count_fraction(self):
-        import tempfile
-        with tempfile.TemporaryDirectory()as d:
-            p=Path(d);(p/'kabat_H1.json').write_text(json.dumps({'scheme':'kabat','position':'H1','organism':'All','counts':{'Q':3,'-':1},'total_including_gap':4}))
-            table=cli.FrequencyTables([p]);value,status,_=table.lookup('kabat','H1','Q')
-            self.assertEqual(value,75.);self.assertEqual(status,'public_position_frequency')
-            self.assertEqual(table.lookup('kabat','H1','X')[1],'unknown_residue')
 
 
 if __name__=='__main__':unittest.main()

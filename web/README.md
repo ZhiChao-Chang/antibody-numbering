@@ -28,7 +28,7 @@ IMGT, Kabat, Chothia consensus, and AbM regions are selectable in every view. Ex
 
 ## Downloads
 
-CSV contains every record and all five schemes. ZIP places each record under `sequences/`, with a shared index and run information at the top level. Duplicate headers are kept as separate records, and skipped records retain their input and processing status.
+`numbering.csv` contains every record and all five schemes. ZIP places each record under `sequences/`, with a shared index and run information at the top level. Duplicate headers are kept as separate records, and skipped records retain their input and processing status.
 
 ## Deployment and updates
 

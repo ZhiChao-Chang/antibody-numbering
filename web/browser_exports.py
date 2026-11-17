@@ -64,7 +64,7 @@ def prepare_browser_result(output_path, definitions_path):
     records = json.loads(files['input_ledger.json'])
     backends = json.loads(files['backend_outputs.json'])
     manifest = json.loads(files['manifest.json'])
-    reader = csv.DictReader(io.StringIO(files['numbering_with_frequencies.csv']))
+    reader = csv.DictReader(io.StringIO(files['numbering.csv']))
     rows = list(reader)
     row_columns = reader.fieldnames
     reader = csv.DictReader(io.StringIO(files['records_summary.csv']))
@@ -91,10 +91,6 @@ def prepare_browser_result(output_path, definitions_path):
             directory + '/backend_outputs.json': json_text({rid: backends[rid]} if rid in backends else {}),
             directory + '/input_ledger.json': json_text([record]),
             directory + '/input.fasta': '>' + record['header'] + '\n' + record['raw_sequence'] + '\n',
-            directory + '/missing_frequency_positions.json': json_text(sorted({
-                (row['scheme'], row['position']) for row in local_rows
-                if row['frequency_status'] == 'missing_frequency_reference'
-            })),
         })
         index_rows.append({
             'record_id': rid, 'header': record['header'], 'directory': directory,
@@ -108,8 +104,8 @@ def prepare_browser_result(output_path, definitions_path):
         'Antibody Numbering - per-sequence results\n\n'
         'Start with records_index.csv to locate each FASTA record and its processing statuses.\n'
         'Each sequences/ subdirectory contains only that record: numbering.csv (all five\n'
-        'schemes), records_summary.csv, backend_outputs.json, input_ledger.json, input.fasta,\n'
-        'and missing_frequency_positions.json. Skipped inputs retain their own directory\n'
+        'schemes), records_summary.csv, backend_outputs.json, input_ledger.json, and input.fasta.\n'
+        'Skipped inputs retain their own directory\n'
         'and statuses; their numbering.csv contains the header only. Duplicate FASTA\n'
         'headers remain separate through stable seq_ IDs.\n\n'
         'The outer manifest.json is the original batch provenance, with shared engine,\n'
@@ -121,8 +117,8 @@ def prepare_browser_result(output_path, definitions_path):
         'in records_index.csv order reproduces those combined data rows.\n'
     )
     archive_files['export_manifest.json'] = json_text({
-        'schema': 'per_sequence_zip_v1', 'records': len(records),
-        'combined_csv_sha256': hashlib.sha256(files['numbering_with_frequencies.csv'].encode()).hexdigest(),
+        'schema': 'per_sequence_zip_v2', 'records': len(records),
+        'combined_csv_sha256': hashlib.sha256(files['numbering.csv'].encode()).hexdigest(),
         'exporter_source_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         'files': {name: {'bytes': len(content.encode('utf-8')), 'sha256': hashlib.sha256(content.encode('utf-8')).hexdigest()}
                   for name, content in archive_files.items()},

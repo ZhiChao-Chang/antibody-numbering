@@ -1,4 +1,4 @@
-const ALGORITHM_RELEASE = '2026.11.17.1';
+const ALGORITHM_RELEASE = '2026.11.17.2';
 const $ = id => document.getElementById(id);
 let worker, requestId=0, output=null, busy=false;
 const statuses={numbered:'已编号',unsupported:'该编号体系暂不支持',unclassified:'未识别为支持的抗体可变域',unmapped_position:'未映射位置',skipped_stop_character:'跳过：包含终止符 *',skipped_invalid_character:'跳过：包含无效字符',skipped_empty_sequence:'跳过：空序列'};
@@ -88,5 +88,5 @@ $('open-file')?.addEventListener('click',()=>$('file').click());
 $('file').addEventListener('change',async event=>{const file=event.target.files[0];if(file){$('fasta').value=await file.text();updateCount();status('已在浏览器内读取 '+file.name+'，点击“开始编号”运行。');}event.target.value='';});
 $('record').addEventListener('change',renderRecord);$('scheme').addEventListener('change',renderRecord);
 $('cdr-definition')?.addEventListener('change',renderRecord);
-$('download-csv').addEventListener('click',()=>{if(output)save('numbering_with_frequencies.csv',output.files['numbering_with_frequencies.csv'],'text/csv;charset=utf-8');});
+$('download-csv').addEventListener('click',()=>{if(output)save('numbering.csv',output.files['numbering.csv'],'text/csv;charset=utf-8');});
 $('download-zip').addEventListener('click',()=>{if(output)save('antibody_numbering_results.zip',Uint8Array.from(atob(output.zip),c=>c.charCodeAt(0)),'application/zip');});

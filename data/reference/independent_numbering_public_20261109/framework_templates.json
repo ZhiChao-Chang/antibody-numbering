@@ -1,6 +1,6 @@
 {
   "schema": "public_numbered_frameworks_v2",
-  "provenance": "Framework references from PDB, SAbDab2 and OAS with abYsis numbering annotations.",
+  "provenance": "Sequences: PDB, SAbDab2, OAS. Numbering annotations: abYsis.",
   "templates": {
     "H": {
       "sequence": "QVQLQQPGAELVKPGASVKMSCKASXXXXXXXXXXWVKQTPGRGLEWIGXXXXXXXXXXXXXXXXXKATLTADKSSSTAYMQLSSLTSEDSAVYYCXXXXXXXXXXXXXXWGAGTTVTVSA",

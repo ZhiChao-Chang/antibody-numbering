@@ -43,7 +43,7 @@ python3 scripts/number_antibodies_independent.py \
   --output results/example
 ```
 
-The example contains public rituximab VH/VL sequences from [PDB 6VJA](https://www.rcsb.org/structure/6VJA). Open `numbering_with_frequencies.csv` in the output directory to view the mappings. Use a new output directory for each run.
+The example contains public rituximab VH/VL sequences from [PDB 6VJA](https://www.rcsb.org/structure/6VJA). Open `numbering.csv` in the output directory to view the mappings. Use a new output directory for each run.
 
 ## Usage
 
@@ -60,34 +60,18 @@ python3 scripts/number_antibodies_independent.py \
 | `--input PATH` | Input FASTA file. |
 | `--output PATH` | New directory for results. |
 | `--frameworks PATH` | Optional custom framework JSON; the bundled library is the default. |
-| `--frequency-cache PATH` | Optional local amino-acid frequency tables; may be repeated. |
 | `--help` | Show command-line help. |
 
-<details>
-<summary>Optional amino-acid reference frequencies</summary>
-
-```bash
-python3 scripts/number_antibodies_independent.py \
-  --input antibodies.fasta \
-  --output results/with_frequencies \
-  --frequency-cache data/reference/abysis_frequencies_all_20261105 \
-  --frequency-cache data/reference/independent_numbering_frequencies_20261109
-```
-
-`frequency_percent` describes observed amino-acid usage at a numbered position. Tables cover a subset of positions; unavailable values remain blank. The browser tool uses numbering without frequency annotation.
-
-</details>
 
 ## Outputs
 
 | File | Contents |
 | --- | --- |
-| `numbering_with_frequencies.csv` | All sequences and five schemes, one row per residue and scheme. |
+| `numbering.csv` | All sequences and five schemes, one row per residue and scheme. |
 | `records_summary.csv` | Status and mapped-residue count for each sequence and scheme. |
 | `backend_outputs.json` | Complete mappings, selected framework, segments, and compatibility notes. |
 | `input_ledger.json` | Original/normalized sequences and their index correspondence. |
 | `manifest.json` | Run status, record counts, input and software/reference hashes. |
-| `missing_frequency_positions.json` | Positions without optional frequency tables. |
 
 Indices are **1-based**. Keep standard labels such as `H35A` and `H112.1` as strings.
 
@@ -108,6 +92,6 @@ See [web/README.md](web/README.md) for local preview and deployment. Report issu
 
 ## Data and license
 
-Bundled framework references include public PDB, SAbDab2, and OAS sources with abYsis numbering annotations. See [data/reference/README.md](data/reference/README.md) for details.
+The bundled framework library is described in [data/reference/README.md](data/reference/README.md).
 
 Original code is licensed under [MIT](LICENSE). Third-party reference data and the bundled browser runtime retain their source attribution and licenses.

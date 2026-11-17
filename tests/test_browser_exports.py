@@ -44,8 +44,8 @@ class BrowserExportTests(unittest.TestCase):
         cls.temporary.cleanup()
 
     def test_combined_csv_is_unchanged(self):
-        self.assertEqual(self.result['files']['numbering_with_frequencies.csv'].encode(),
-                         (self.output / 'numbering_with_frequencies.csv').read_bytes())
+        self.assertEqual(self.result['files']['numbering.csv'].encode(),
+                         (self.output / 'numbering.csv').read_bytes())
 
     def test_split_rows_reassemble_to_the_original_csv(self):
         assembled = []
@@ -53,9 +53,9 @@ class BrowserExportTests(unittest.TestCase):
             rows = list(csv.DictReader(io.StringIO(self.archive.read(entry['directory'] + '/numbering.csv').decode())))
             self.assertTrue(all(row['record_id'] == entry['record_id'] for row in rows))
             assembled.extend(rows)
-        source = csv.DictReader(io.StringIO(self.result['files']['numbering_with_frequencies.csv']))
+        source = csv.DictReader(io.StringIO(self.result['files']['numbering.csv']))
         self.assertEqual(assembled, list(source))
-        self.assertEqual(exports.csv_text(assembled, source.fieldnames), self.result['files']['numbering_with_frequencies.csv'])
+        self.assertEqual(exports.csv_text(assembled, source.fieldnames), self.result['files']['numbering.csv'])
 
     def test_headers_never_create_unsafe_or_duplicate_paths(self):
         self.assertEqual(len(self.index), 5)
@@ -80,8 +80,17 @@ class BrowserExportTests(unittest.TestCase):
 
     def test_shared_manifest_and_export_hashes(self):
         self.assertEqual(self.archive.read('manifest.json'), (self.output / 'manifest.json').read_bytes())
-        self.assertNotIn('numbering_with_frequencies.csv', self.archive.namelist())
+        self.assertNotIn('numbering.csv', self.archive.namelist())
         manifest = json.loads(self.archive.read('export_manifest.json'))
+        self.assertEqual(manifest['schema'], 'per_sequence_zip_v2')
+        expected = {'README.txt', 'records_index.csv', 'manifest.json',
+                    'export_manifest.json', 'cdr_definitions.json'}
+        for record in self.index:
+            expected.update(record['directory'] + '/' + name for name in (
+                'numbering.csv', 'records_summary.csv', 'backend_outputs.json',
+                'input_ledger.json', 'input.fasta',
+            ))
+        self.assertEqual(set(self.archive.namelist()), expected)
         for name, item in manifest['files'].items():
             content = self.archive.read(name)
             self.assertEqual(len(content), item['bytes'])

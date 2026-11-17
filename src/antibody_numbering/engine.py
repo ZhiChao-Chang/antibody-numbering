@@ -180,7 +180,7 @@ def loop_labels(chain,region,length,scheme,complete=True,light_subtype="kappa"):
             if scheme=='imgt':return ['55']+centered(56,65,length-9)+linear(66,72)+['74']
             if scheme=='aho':
                 # Retain the supported legacy AHo partial-conversion rule.
-                # Verified legacy abYsis truncation applies to supported lengths >=19.
+                # Partial AHo conversion applies to supported lengths >=19.
                 if length>=19:return ['57','58','59','60','61','65']+['']*(length-6)
                 if length==15:return linear(57,59)+linear(65,76)
                 return linear(57,56+length-13)+linear(64,76)
@@ -549,7 +549,7 @@ class AnchorNumberer:
                 # Keep blanks and a note rather than presenting a full mapping.
                 if chain=='H' and scheme=='aho' and loops[2][1]-loops[2][0]>=19:
                     positions[loops[2][0]+6:]=['']*(len(sequence)-loops[2][0]-6)
-                    notes.append('Legacy abYsis AHo partial output for H2 length>=19; length-conditioned compatibility limit')
+                    notes.append('Partial AHo output for H2 length>=19; remaining positions are unmapped')
             except UnsupportedNumbering as error:
                 # Keep the diagnostic reason and input-length correspondence.
                 # Do not publish partly assigned labels for a rejected scheme.

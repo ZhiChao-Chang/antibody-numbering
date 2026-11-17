@@ -2,7 +2,7 @@
 """Batch FASTA numbering for antibody variable domains.
 
 Read VH/VL sequences, assign five numbering schemes, and export residue-level
-results, optional amino-acid frequencies, and run metadata.
+results and run metadata.
 """
 from pathlib import Path
 from collections import Counter
@@ -58,65 +58,25 @@ def read_fasta(path):
     return records
 
 
-class FrequencyTables:
-    """Read optional local count snapshots; never influence numbering decisions.
-
-    cache stores loaded/missing (scheme, position) tables for this process.
-    used records the exact reference files accessed, including their byte hashes.
-    An empty roots list is valid and simply leaves frequency values unavailable.
-    """
-
-    def __init__(self,roots):
-        """Retain the caller's directory precedence and start empty lookup caches."""
-        self.roots=roots;self.cache={};self.used={}
-    def lookup(self,scheme,position,aa):
-        """Return (percentage_or_blank, status, reference_path_or_blank).
-
-        A missing reference is distinct from a measured zero frequency. Unknown
-        amino acids and unmapped positions are explicitly left unannotated.
-        """
-        if not position:return '', 'unmapped_position', ''
-        if aa=='X':return '', 'unknown_residue', ''
-        key=(scheme,position)
-        if key not in self.cache:
-            matches=[Path(p)/(scheme+'_'+position+'.json')for p in self.roots]
-            matches=[p for p in matches if p.exists()]
-            if not matches:self.cache[key]=None
-            else:
-                # Ordered, explicit precedence; never overwrite a historical table.
-                path=matches[0];d=json.loads(path.read_text())
-                assert (d['scheme'],d['position'],d['organism'])==(scheme,position,'All')
-                assert sum(d['counts'].values())==d['total_including_gap']
-                self.cache[key]=(d,path);self.used[str(path)]={'sha256':sha(path),'url':d.get('url'),'fetched_at_utc':d.get('fetched_at_utc')}
-        ref=self.cache[key]
-        if ref is None:return '', 'missing_frequency_reference', ''
-        d,path=ref
-        if not d['total_including_gap']:return '', 'empty_reference', str(path)
-        # The denominator includes gap counts in the public All-organism table.
-        return 100*d['counts'][aa]/d['total_including_gap'],'public_position_frequency',str(path)
-
-
 def main():
     """Run a batch and export residue mappings, summaries, and run metadata."""
-    # Stage 1: parse options. Frameworks default to the bundled JSON; frequency
-    # annotation remains opt-in through one or more --frequency-cache arguments.
+    # Stage 1: parse options and load the bundled or supplied framework library.
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--input',required=True,type=Path)
     p.add_argument('--output',required=True,type=Path)
     p.add_argument('--frameworks',type=Path,
         default=ROOT/'data/reference/independent_numbering_public_20261109/framework_templates.json',
         help='Public framework JSON; defaults to the bundled project asset: %(default)s')
-    p.add_argument('--frequency-cache',action='append',type=Path,default=[])
     args=p.parse_args()
     # A fresh directory protects existing scientific outputs from accidental reuse.
     assert not args.output.exists(),'Use a new output directory'
-    records=read_fasta(args.input);numberer=AnchorNumberer(args.frameworks);frequencies=FrequencyTables(args.frequency_cache)
+    records=read_fasta(args.input);numberer=AnchorNumberer(args.frameworks)
     args.output.mkdir(parents=True)
-    columns=['record_id','header','scheme','chain_type','raw_index','normalized_index','input_residue','model_residue','position','status','frequency_percent','frequency_status','frequency_reference','backend']
-    summaries=[];predictions={};counts=Counter();missing=set();rowcount=0
+    columns=['record_id','header','scheme','chain_type','raw_index','normalized_index','input_residue','model_residue','position','status','backend']
+    summaries=[];predictions={};counts=Counter();rowcount=0
     # Stage 2: process each record once. The engine returns all five schemes;
     # the CSV expands them into one row per normalized residue per scheme.
-    with (args.output/'numbering_with_frequencies.csv').open('w',newline='')as f:
+    with (args.output/'numbering.csv').open('w',newline='')as f:
         writer=csv.DictWriter(f,fieldnames=columns);writer.writeheader()
         for record in records:
             if record['status']!='ready':
@@ -137,37 +97,31 @@ def main():
                 mapped=[x for x in positions if x];assert len(mapped)==len(set(mapped)),(record['record_id'],sc,'duplicate_position')
                 counts[sc+':'+status]+=1
                 summaries.append({'record_id':record['record_id'],'scheme':sc,'status':status,'numbered_residues':len(mapped)})
-                # Frequency lookup follows numbering and cannot change the label.
                 # i is zero-based internally; exported indices below are one-based.
                 for i,(aa,position)in enumerate(zip(seq,positions)):
-                    frequency,fstatus,source=frequencies.lookup(sc,position,aa)
-                    if fstatus=='missing_frequency_reference':missing.add((sc,position))
                     writer.writerow({'record_id':record['record_id'],'header':record['header'],'scheme':sc,
                         'chain_type':result.get('chain',''),'raw_index':record['source_indices'][i],'normalized_index':i+1,
                         'input_residue':record['raw_sequence'][record['source_indices'][i]-1],'model_residue':aa,'position':position,
-                        'status':status if position or status!='numbered'else'unmapped_position','frequency_percent':frequency,
-                        'frequency_status':fstatus,'frequency_reference':source,'backend':'own_anchor_region_v1'})
+                        'status':status if position or status!='numbered'else'unmapped_position','backend':'own_anchor_region_v1'})
                     rowcount+=1
     # Stage 3: save machine-readable summaries and full intermediate results.
     # The ledger includes the original input sequences and is private run output.
     with (args.output/'records_summary.csv').open('w',newline='')as f:
         writer=csv.DictWriter(f,fieldnames=['record_id','scheme','status','numbered_residues']);writer.writeheader();writer.writerows(summaries)
     def save(name,value):(args.output/name).write_text(json.dumps(value,ensure_ascii=False,indent=2,allow_nan=False)+'\n')
-    save('input_ledger.json',records);save('backend_outputs.json',predictions);save('missing_frequency_positions.json',sorted(missing))
+    save('input_ledger.json',records);save('backend_outputs.json',predictions)
     import inspect
     engine_path=Path(inspect.getfile(AnchorNumberer))
-    # Stage 4: fingerprint code, input, frameworks, and every frequency table used.
+    # Stage 4: fingerprint the code, input, and framework library.
     manifest={'phase':'COMPLETED','created_at_utc':datetime.now(timezone.utc).isoformat(),
         'backend':'Antibody Numbering',
         'public_frameworks':str(args.frameworks),'public_frameworks_sha256':sha(args.frameworks),
         'engine_source_sha256':sha(engine_path),'runner_source_sha256':sha(__file__),'input_sha256':sha(args.input),
         'records':len(records),'effective_records':len(predictions),'row_count':rowcount,'record_scheme_counts':dict(counts),
         'skipped_records':dict(Counter(x['status']for x in records if x['status']!='ready')),
-        'frequency_semantics':'Per-position amino-acid usage, organism All, total including gaps.',
-        'frequency_references':frequencies.used,'missing_frequency_positions':len(missing),
     }
     save('manifest.json',manifest)
-    print(json.dumps({k:v for k,v in manifest.items()if k!='frequency_references'},ensure_ascii=False))
+    print(json.dumps(manifest,ensure_ascii=False))
 
 
 if __name__=='__main__':main()

@@ -1,12 +1,12 @@
 {
   "schema": "browser_algorithm_bundle_v1",
-  "release": "2026.11.17.1",
+  "release": "2026.11.17.2",
   "files": {
-    "src/antibody_numbering/engine.py": "c2b9262d227e7b4b61d556265d2273772c6f38be26971c5b7fea6ce8547640ec",
+    "src/antibody_numbering/engine.py": "3f0c01c20cc593fee7fa7d545e39da614a65e15795816e63883f8dd32b2eb5a9",
     "src/antibody_numbering/__init__.py": "de77d8a54733ae8fc0c54cb8aaafaf0619c28fccd15945daf803780942019d10",
-    "scripts/number_antibodies_independent.py": "636bf6da8cbca280aa574455e5e2ff06f52a46ad1882446529e67bb4ba5f793c",
-    "data/reference/independent_numbering_public_20261109/framework_templates.json": "a7b489a934dbe3d5c89016bbc6d64d7cbaa1c38be7d423260da02b4edc37d9fb",
-    "web/browser_exports.py": "e39db1b7f7e57b8e73bd6ba034e88ffb0ed60ce1c8a0ea30840e3706d4ec4db3",
+    "scripts/number_antibodies_independent.py": "fd32ec1f70e47cdaf65f059f58307696ba3f409b4f0c83da0e2b82acedd8cdc6",
+    "data/reference/independent_numbering_public_20261109/framework_templates.json": "bb0565f6f788f4db4e381a83942cb6731de3d8ed9c7678e7d1c7a9921eb6822d",
+    "web/browser_exports.py": "e9becb94f9597c33651960c7277a44befa13ff8b5d5df151188bdee9d39cd854",
     "web/cdr_definitions.json": "7c5689d83124fe529b34f6cf45be24532b15fb45f4939fa9961eae5fe191d1b9"
   }
 }
