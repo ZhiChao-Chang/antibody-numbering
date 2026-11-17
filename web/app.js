@@ -1,3 +1,4 @@
+const ALGORITHM_RELEASE = '2026.11.17';
 const $ = id => document.getElementById(id);
 let worker, requestId=0, output=null, busy=false;
 const statuses={numbered:'已编号',unsupported:'该编号体系暂不支持',unclassified:'未识别为支持的抗体可变域',unmapped_position:'未映射位置',skipped_stop_character:'跳过：包含终止符 *',skipped_invalid_character:'跳过：包含无效字符',skipped_empty_sequence:'跳过：空序列'};
@@ -9,7 +10,7 @@ function setBusy(value) { busy=value; $('workspace')?.setAttribute('aria-busy',S
 function updateCount() { const text=$('fasta').value; const n=(text.match(/^\s*>/gm)||[]).length; $('input-count').textContent=text.trim()?`${n} 条 FASTA 记录 · ${text.length.toLocaleString()} 字符`:'等待输入'; }
 function save(name, value, type='text/plain;charset=utf-8') { const link=document.createElement('a'), url=URL.createObjectURL(new Blob([value],{type})); link.href=url; link.download=name; link.click(); setTimeout(()=>URL.revokeObjectURL(url),1500); }
 function setupWorker() {
-  worker=new Worker(new URL('./numbering-worker.mjs?v=4',import.meta.url),{type:'module'});
+  worker=new Worker(new URL('./numbering-worker.mjs?v='+ALGORITHM_RELEASE,import.meta.url),{type:'module'});
   worker.onmessage=({data})=>{
     if(data.id!==undefined && data.id!==requestId)return;
     if(data.type==='progress')status(data.message);

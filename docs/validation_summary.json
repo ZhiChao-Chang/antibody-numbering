@@ -1,0 +1,595 @@
+{
+  "core_records": 1484,
+  "expanded_records": 12500,
+  "combined_records": 13984,
+  "unique_sequences": 13645,
+  "runtime_errors": 0,
+  "negative_false_assignments": 0,
+  "engineering_tests_passed": 33,
+  "original_regression_all_records_exact": 184,
+  "primary_metrics": [
+    {
+      "dataset": "representative",
+      "scheme": "kabat",
+      "records": 200,
+      "all_status_exact": 197,
+      "reference_numbered_records": 197,
+      "whole_exact": 197,
+      "reference_residues": 22730,
+      "equal_residues": 22730,
+      "covered_residues": 22730,
+      "whole_agreement": 1.0,
+      "residue_agreement": 1.0
+    },
+    {
+      "dataset": "representative",
+      "scheme": "chothia",
+      "records": 200,
+      "all_status_exact": 197,
+      "reference_numbered_records": 197,
+      "whole_exact": 197,
+      "reference_residues": 22730,
+      "equal_residues": 22730,
+      "covered_residues": 22730,
+      "whole_agreement": 1.0,
+      "residue_agreement": 1.0
+    },
+    {
+      "dataset": "representative",
+      "scheme": "imgt",
+      "records": 200,
+      "all_status_exact": 197,
+      "reference_numbered_records": 197,
+      "whole_exact": 197,
+      "reference_residues": 22730,
+      "equal_residues": 22730,
+      "covered_residues": 22730,
+      "whole_agreement": 1.0,
+      "residue_agreement": 1.0
+    },
+    {
+      "dataset": "representative",
+      "scheme": "martin",
+      "records": 200,
+      "all_status_exact": 197,
+      "reference_numbered_records": 197,
+      "whole_exact": 197,
+      "reference_residues": 22730,
+      "equal_residues": 22730,
+      "covered_residues": 22730,
+      "whole_agreement": 1.0,
+      "residue_agreement": 1.0
+    },
+    {
+      "dataset": "representative",
+      "scheme": "aho",
+      "records": 200,
+      "all_status_exact": 197,
+      "reference_numbered_records": 197,
+      "whole_exact": 197,
+      "reference_residues": 22515,
+      "equal_residues": 22515,
+      "covered_residues": 22515,
+      "whole_agreement": 1.0,
+      "residue_agreement": 1.0
+    },
+    {
+      "dataset": "difficult",
+      "scheme": "kabat",
+      "records": 100,
+      "all_status_exact": 92,
+      "reference_numbered_records": 95,
+      "whole_exact": 91,
+      "reference_residues": 10683,
+      "equal_residues": 10683,
+      "covered_residues": 10683,
+      "whole_agreement": 0.9578947368421052,
+      "residue_agreement": 1.0
+    },
+    {
+      "dataset": "difficult",
+      "scheme": "chothia",
+      "records": 100,
+      "all_status_exact": 92,
+      "reference_numbered_records": 95,
+      "whole_exact": 91,
+      "reference_residues": 10683,
+      "equal_residues": 10683,
+      "covered_residues": 10683,
+      "whole_agreement": 0.9578947368421052,
+      "residue_agreement": 1.0
+    },
+    {
+      "dataset": "difficult",
+      "scheme": "imgt",
+      "records": 100,
+      "all_status_exact": 92,
+      "reference_numbered_records": 95,
+      "whole_exact": 91,
+      "reference_residues": 10683,
+      "equal_residues": 10681,
+      "covered_residues": 10683,
+      "whole_agreement": 0.9578947368421052,
+      "residue_agreement": 0.999812786670411
+    },
+    {
+      "dataset": "difficult",
+      "scheme": "martin",
+      "records": 100,
+      "all_status_exact": 92,
+      "reference_numbered_records": 95,
+      "whole_exact": 91,
+      "reference_residues": 10683,
+      "equal_residues": 10683,
+      "covered_residues": 10683,
+      "whole_agreement": 0.9578947368421052,
+      "residue_agreement": 1.0
+    },
+    {
+      "dataset": "difficult",
+      "scheme": "aho",
+      "records": 100,
+      "all_status_exact": 90,
+      "reference_numbered_records": 95,
+      "whole_exact": 89,
+      "reference_residues": 9568,
+      "equal_residues": 9560,
+      "covered_residues": 9568,
+      "whole_agreement": 0.9368421052631579,
+      "residue_agreement": 0.9991638795986622
+    }
+  ],
+  "remaining_reference_numbered_disagreements": {
+    "reference_domain_coverage": 4,
+    "unresolved_aho_loop_layout": 2
+  },
+  "conditional_reference_domain_groups_exact": 20,
+  "fresh_blind_accuracy_estimate": false,
+  "release": "2026.11.17",
+  "primary_reference": "Frozen abYsis annotations",
+  "scope": "Opened fixed development compatibility, not untouched accuracy",
+  "auxiliary_status_counts": {
+    "diagnostic": {
+      "kabat": {
+        "records": 1000,
+        "numbered": 999,
+        "unclassified": 1
+      },
+      "chothia": {
+        "records": 1000,
+        "numbered": 999,
+        "unclassified": 1
+      },
+      "imgt": {
+        "records": 1000,
+        "numbered": 999,
+        "unclassified": 1
+      },
+      "martin": {
+        "records": 1000,
+        "numbered": 999,
+        "unclassified": 1
+      },
+      "aho": {
+        "records": 1000,
+        "numbered": 999,
+        "unclassified": 1
+      }
+    },
+    "locked": {
+      "kabat": {
+        "records": 1000,
+        "numbered": 994,
+        "unclassified": 6
+      },
+      "chothia": {
+        "records": 1000,
+        "numbered": 994,
+        "unclassified": 6
+      },
+      "imgt": {
+        "records": 1000,
+        "numbered": 994,
+        "unclassified": 6
+      },
+      "martin": {
+        "records": 1000,
+        "numbered": 994,
+        "unclassified": 6
+      },
+      "aho": {
+        "records": 1000,
+        "numbered": 994,
+        "unclassified": 6
+      }
+    },
+    "natural": {
+      "kabat": {
+        "records": 10000,
+        "numbered": 9952,
+        "unclassified": 26,
+        "unsupported": 22
+      },
+      "chothia": {
+        "records": 10000,
+        "numbered": 9952,
+        "unclassified": 26,
+        "unsupported": 22
+      },
+      "imgt": {
+        "records": 10000,
+        "numbered": 9973,
+        "unclassified": 26,
+        "unsupported": 1
+      },
+      "martin": {
+        "records": 10000,
+        "numbered": 9952,
+        "unclassified": 26,
+        "unsupported": 22
+      },
+      "aho": {
+        "records": 10000,
+        "numbered": 9949,
+        "unclassified": 26,
+        "unsupported": 25
+      }
+    },
+    "boundary": {
+      "kabat": {
+        "records": 500,
+        "numbered": 500
+      },
+      "chothia": {
+        "records": 500,
+        "numbered": 500
+      },
+      "imgt": {
+        "records": 500,
+        "numbered": 500
+      },
+      "martin": {
+        "records": 500,
+        "numbered": 500
+      },
+      "aho": {
+        "records": 500,
+        "numbered": 500
+      }
+    }
+  },
+  "reference_receipt_audit": {
+    "records": 300,
+    "errors": 0
+  },
+  "reference_unclassified_inputs": {
+    "representative": 3,
+    "difficult": 5
+  },
+  "natural_cached_peer_comparisons": [
+    {
+      "cohort": "natural",
+      "reference": "anarci",
+      "scheme": "kabat",
+      "version": "before",
+      "records": 10000,
+      "reference_numbered_records": 9972,
+      "whole_exact": 7132,
+      "reference_residues": 1148554,
+      "equal_residues": 1094304,
+      "covered_reference_residues": 1099811,
+      "reference_errors": 2,
+      "reference_unclassified": 26,
+      "whole_agreement": 0.7152025671881268,
+      "residue_agreement": 0.9527666962110619,
+      "coverage": 0.9575614207081252
+    },
+    {
+      "cohort": "natural",
+      "reference": "anarci",
+      "scheme": "kabat",
+      "version": "after",
+      "records": 10000,
+      "reference_numbered_records": 9972,
+      "whole_exact": 7407,
+      "reference_residues": 1148554,
+      "equal_residues": 1141568,
+      "covered_reference_residues": 1146374,
+      "reference_errors": 2,
+      "reference_unclassified": 26,
+      "whole_agreement": 0.7427797833935018,
+      "residue_agreement": 0.9939175693959535,
+      "coverage": 0.9981019612486657
+    },
+    {
+      "cohort": "natural",
+      "reference": "anarci",
+      "scheme": "chothia",
+      "version": "before",
+      "records": 10000,
+      "reference_numbered_records": 9972,
+      "whole_exact": 7132,
+      "reference_residues": 1148554,
+      "equal_residues": 1094307,
+      "covered_reference_residues": 1099811,
+      "reference_errors": 2,
+      "reference_unclassified": 26,
+      "whole_agreement": 0.7152025671881268,
+      "residue_agreement": 0.9527693081909949,
+      "coverage": 0.9575614207081252
+    },
+    {
+      "cohort": "natural",
+      "reference": "anarci",
+      "scheme": "chothia",
+      "version": "after",
+      "records": 10000,
+      "reference_numbered_records": 9972,
+      "whole_exact": 7404,
+      "reference_residues": 1148554,
+      "equal_residues": 1141226,
+      "covered_reference_residues": 1146374,
+      "reference_errors": 2,
+      "reference_unclassified": 26,
+      "whole_agreement": 0.7424789410348978,
+      "residue_agreement": 0.9936198036835883,
+      "coverage": 0.9981019612486657
+    },
+    {
+      "cohort": "natural",
+      "reference": "anarci",
+      "scheme": "imgt",
+      "version": "before",
+      "records": 10000,
+      "reference_numbered_records": 9991,
+      "whole_exact": 4717,
+      "reference_residues": 1151624,
+      "equal_residues": 1045502,
+      "covered_reference_residues": 1111324,
+      "reference_unclassified": 9,
+      "whole_agreement": 0.47212491242117904,
+      "residue_agreement": 0.9078501316401881,
+      "coverage": 0.9650059394385667
+    },
+    {
+      "cohort": "natural",
+      "reference": "anarci",
+      "scheme": "imgt",
+      "version": "after",
+      "records": 10000,
+      "reference_numbered_records": 9991,
+      "whole_exact": 4868,
+      "reference_residues": 1151624,
+      "equal_residues": 1083783,
+      "covered_reference_residues": 1149868,
+      "reference_unclassified": 9,
+      "whole_agreement": 0.4872385146631969,
+      "residue_agreement": 0.9410910158176627,
+      "coverage": 0.998475196765611
+    },
+    {
+      "cohort": "natural",
+      "reference": "anarci",
+      "scheme": "martin",
+      "version": "before",
+      "records": 10000,
+      "reference_numbered_records": 9974,
+      "whole_exact": 6959,
+      "reference_residues": 1148799,
+      "equal_residues": 1087366,
+      "covered_reference_residues": 1099811,
+      "reference_unclassified": 26,
+      "whole_agreement": 0.6977140565470222,
+      "residue_agreement": 0.9465241526150353,
+      "coverage": 0.9573572052204085
+    },
+    {
+      "cohort": "natural",
+      "reference": "anarci",
+      "scheme": "martin",
+      "version": "after",
+      "records": 10000,
+      "reference_numbered_records": 9974,
+      "whole_exact": 7185,
+      "reference_residues": 1148799,
+      "equal_residues": 1135114,
+      "covered_reference_residues": 1146619,
+      "reference_unclassified": 26,
+      "whole_agreement": 0.7203729697212753,
+      "residue_agreement": 0.9880875592684186,
+      "coverage": 0.9981023660361822
+    },
+    {
+      "cohort": "natural",
+      "reference": "anarci",
+      "scheme": "aho",
+      "version": "before",
+      "records": 10000,
+      "reference_numbered_records": 9979,
+      "whole_exact": 0,
+      "reference_residues": 1149601,
+      "equal_residues": 1004111,
+      "covered_reference_residues": 1088145,
+      "reference_unclassified": 21,
+      "whole_agreement": 0.0,
+      "residue_agreement": 0.8734430467614416,
+      "coverage": 0.946541452208201
+    },
+    {
+      "cohort": "natural",
+      "reference": "anarci",
+      "scheme": "aho",
+      "version": "after",
+      "records": 10000,
+      "reference_numbered_records": 9979,
+      "whole_exact": 0,
+      "reference_residues": 1149601,
+      "equal_residues": 1042763,
+      "covered_reference_residues": 1124032,
+      "reference_unclassified": 21,
+      "whole_agreement": 0.0,
+      "residue_agreement": 0.9070651469509856,
+      "coverage": 0.9777583700779662
+    },
+    {
+      "cohort": "natural",
+      "reference": "anarcii",
+      "scheme": "kabat",
+      "version": "before",
+      "records": 10000,
+      "reference_numbered_records": 9983,
+      "whole_exact": 7139,
+      "reference_residues": 1149802,
+      "equal_residues": 1094126,
+      "covered_reference_residues": 1099620,
+      "reference_unclassified": 17,
+      "whole_agreement": 0.7151156966843634,
+      "residue_agreement": 0.9515777499082451,
+      "coverage": 0.9563559638963925
+    },
+    {
+      "cohort": "natural",
+      "reference": "anarcii",
+      "scheme": "kabat",
+      "version": "after",
+      "records": 10000,
+      "reference_numbered_records": 9983,
+      "whole_exact": 7410,
+      "reference_residues": 1149802,
+      "equal_residues": 1141633,
+      "covered_reference_residues": 1146448,
+      "reference_unclassified": 17,
+      "whole_agreement": 0.7422618451367324,
+      "residue_agreement": 0.9928952984948712,
+      "coverage": 0.9970829760254374
+    },
+    {
+      "cohort": "natural",
+      "reference": "anarcii",
+      "scheme": "chothia",
+      "version": "before",
+      "records": 10000,
+      "reference_numbered_records": 9983,
+      "whole_exact": 7139,
+      "reference_residues": 1149802,
+      "equal_residues": 1094125,
+      "covered_reference_residues": 1099620,
+      "reference_unclassified": 17,
+      "whole_agreement": 0.7151156966843634,
+      "residue_agreement": 0.9515768801932855,
+      "coverage": 0.9563559638963925
+    },
+    {
+      "cohort": "natural",
+      "reference": "anarcii",
+      "scheme": "chothia",
+      "version": "after",
+      "records": 10000,
+      "reference_numbered_records": 9983,
+      "whole_exact": 7407,
+      "reference_residues": 1149802,
+      "equal_residues": 1141287,
+      "covered_reference_residues": 1146448,
+      "reference_unclassified": 17,
+      "whole_agreement": 0.7419613342682561,
+      "residue_agreement": 0.992594377118843,
+      "coverage": 0.9970829760254374
+    },
+    {
+      "cohort": "natural",
+      "reference": "anarcii",
+      "scheme": "imgt",
+      "version": "before",
+      "records": 10000,
+      "reference_numbered_records": 9998,
+      "whole_exact": 4716,
+      "reference_residues": 1152265,
+      "equal_residues": 1045114,
+      "covered_reference_residues": 1111032,
+      "reference_unclassified": 2,
+      "whole_agreement": 0.47169433886777357,
+      "residue_agreement": 0.9070083704703346,
+      "coverage": 0.964215696909999
+    },
+    {
+      "cohort": "natural",
+      "reference": "anarcii",
+      "scheme": "imgt",
+      "version": "after",
+      "records": 10000,
+      "reference_numbered_records": 9998,
+      "whole_exact": 4872,
+      "reference_residues": 1152265,
+      "equal_residues": 1083418,
+      "covered_reference_residues": 1149596,
+      "reference_unclassified": 2,
+      "whole_agreement": 0.4872974594918984,
+      "residue_agreement": 0.940250723574872,
+      "coverage": 0.9976836925533623
+    },
+    {
+      "cohort": "natural",
+      "reference": "anarcii",
+      "scheme": "martin",
+      "version": "before",
+      "records": 10000,
+      "reference_numbered_records": 9983,
+      "whole_exact": 6966,
+      "reference_residues": 1149802,
+      "equal_residues": 1087187,
+      "covered_reference_residues": 1099620,
+      "reference_unclassified": 17,
+      "whole_agreement": 0.6977862366022238,
+      "residue_agreement": 0.9455427978034479,
+      "coverage": 0.9563559638963925
+    },
+    {
+      "cohort": "natural",
+      "reference": "anarcii",
+      "scheme": "martin",
+      "version": "after",
+      "records": 10000,
+      "reference_numbered_records": 9983,
+      "whole_exact": 7204,
+      "reference_residues": 1149802,
+      "equal_residues": 1134959,
+      "covered_reference_residues": 1146448,
+      "reference_unclassified": 17,
+      "whole_agreement": 0.7216267655013523,
+      "residue_agreement": 0.9870908208543732,
+      "coverage": 0.9970829760254374
+    },
+    {
+      "cohort": "natural",
+      "reference": "anarcii",
+      "scheme": "aho",
+      "version": "before",
+      "records": 10000,
+      "reference_numbered_records": 9989,
+      "whole_exact": 0,
+      "reference_residues": 1150751,
+      "equal_residues": 1003983,
+      "covered_reference_residues": 1088017,
+      "reference_unclassified": 11,
+      "whole_agreement": 0.0,
+      "residue_agreement": 0.8724589420300308,
+      "coverage": 0.9454842967766267
+    },
+    {
+      "cohort": "natural",
+      "reference": "anarcii",
+      "scheme": "aho",
+      "version": "after",
+      "records": 10000,
+      "reference_numbered_records": 9989,
+      "whole_exact": 0,
+      "reference_residues": 1150751,
+      "equal_residues": 1042667,
+      "covered_reference_residues": 1123924,
+      "reference_unclassified": 11,
+      "whole_agreement": 0.0,
+      "residue_agreement": 0.9060752499889203,
+      "coverage": 0.9766873980557045
+    }
+  ]
+}

@@ -1,0 +1,1552 @@
+{
+  "release": "2026.11.17",
+  "asset_sha256": "54239346cde4717bdcb0832d3a0b4f5282d7276ebe24b8170c76653b0c717f10",
+  "schema": "public_numbered_frameworks_v2",
+  "framework_fragments": 152,
+  "coordinate_paths": 38,
+  "sources": [
+    "SAbDab2",
+    "OAS",
+    "Cached abYsis numbering labels"
+  ],
+  "selection": {
+    "identity": "Position-wise exact identity / maximum fragment length",
+    "coverage_threshold": 0.86,
+    "limits": {
+      "fr1": 80,
+      "fr2": 24,
+      "fr3": 32,
+      "fr4": 16
+    },
+    "priority": [
+      "new coordinate topology",
+      "uncovered sequence support",
+      "deterministic tie ordering"
+    ]
+  },
+  "development_sets_opened": true,
+  "runtime_full_query_answer_cache": false,
+  "runtime_cdr_sequences_in_fragment_bank": false,
+  "fragments": [
+    {
+      "id": "public_fr1_1",
+      "chain": "L",
+      "light_subtype": "kappa",
+      "frame": "fr1",
+      "length": 22,
+      "source": "SAbDab2",
+      "source_id": "L039F",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr1_2",
+      "chain": "L",
+      "light_subtype": "kappa",
+      "frame": "fr1",
+      "length": 22,
+      "source": "OAS",
+      "source_id": "Goldstein_2019/csv/SRR9179287_paired.csv.gz:235:light",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr1_3",
+      "chain": "L",
+      "light_subtype": "lambda",
+      "frame": "fr1",
+      "length": 21,
+      "source": "OAS",
+      "source_id": "Ferreira_2024/csv_paired/SRR27484695_1_Paired_All.csv.gz:1239:light",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr1_4",
+      "chain": "L",
+      "light_subtype": "lambda",
+      "frame": "fr1",
+      "length": 20,
+      "source": "SAbDab2",
+      "source_id": "L0287",
+      "development_dataset": "difficult"
+    },
+    {
+      "id": "public_fr1_5",
+      "chain": "L",
+      "light_subtype": "lambda",
+      "frame": "fr1",
+      "length": 12,
+      "source": "SAbDab2",
+      "source_id": "L00TJ",
+      "development_dataset": "difficult"
+    },
+    {
+      "id": "public_fr1_6",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr1",
+      "length": 24,
+      "source": "SAbDab2",
+      "source_id": "H03G2",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr1_7",
+      "chain": "L",
+      "light_subtype": "kappa",
+      "frame": "fr1",
+      "length": 21,
+      "source": "SAbDab2",
+      "source_id": "L03TC",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr1_8",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr1",
+      "length": 23,
+      "source": "SAbDab2",
+      "source_id": "H043J",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr1_9",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr1",
+      "length": 24,
+      "source": "SAbDab2",
+      "source_id": "H02AE",
+      "development_dataset": "difficult"
+    },
+    {
+      "id": "public_fr1_10",
+      "chain": "L",
+      "light_subtype": "lambda",
+      "frame": "fr1",
+      "length": 15,
+      "source": "SAbDab2",
+      "source_id": "L00R7",
+      "development_dataset": "difficult"
+    },
+    {
+      "id": "public_fr1_11",
+      "chain": "L",
+      "light_subtype": "lambda",
+      "frame": "fr1",
+      "length": 19,
+      "source": "SAbDab2",
+      "source_id": "L01VX",
+      "development_dataset": "difficult"
+    },
+    {
+      "id": "public_fr1_12",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr1",
+      "length": 22,
+      "source": "SAbDab2",
+      "source_id": "H02N2",
+      "development_dataset": "difficult"
+    },
+    {
+      "id": "public_fr1_13",
+      "chain": "L",
+      "light_subtype": "lambda",
+      "frame": "fr1",
+      "length": 21,
+      "source": "SAbDab2",
+      "source_id": "L04MK",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr1_14",
+      "chain": "L",
+      "light_subtype": "kappa",
+      "frame": "fr1",
+      "length": 19,
+      "source": "OAS",
+      "source_id": "McIntire_2024/csv_paired/GSM6504718_1_Paired_All.csv.gz:1175:light",
+      "development_dataset": "difficult"
+    },
+    {
+      "id": "public_fr1_15",
+      "chain": "L",
+      "light_subtype": "lambda",
+      "frame": "fr1",
+      "length": 22,
+      "source": "SAbDab2",
+      "source_id": "L03ME",
+      "development_dataset": "difficult"
+    },
+    {
+      "id": "public_fr1_16",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr1",
+      "length": 25,
+      "source": "OAS",
+      "source_id": "Jaffe_2022/csv/1279061_1_Paired_All.csv.gz:6273:heavy",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr1_17",
+      "chain": "L",
+      "light_subtype": "kappa",
+      "frame": "fr1",
+      "length": 23,
+      "source": "SAbDab2",
+      "source_id": "L00W6",
+      "development_dataset": "difficult"
+    },
+    {
+      "id": "public_fr1_18",
+      "chain": "L",
+      "light_subtype": "lambda",
+      "frame": "fr1",
+      "length": 22,
+      "source": "OAS",
+      "source_id": "Wang_2023/csv_paired/SRR24716320_1_Paired_All.csv.gz:5793:light",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr1_19",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr1",
+      "length": 25,
+      "source": "OAS",
+      "source_id": "Wang_2023/csv_paired/SRR24716320_1_Paired_All.csv.gz:1866:heavy",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr1_20",
+      "chain": "L",
+      "light_subtype": "lambda",
+      "frame": "fr1",
+      "length": 22,
+      "source": "OAS",
+      "source_id": "Wang_2023/csv_paired/SRR24716320_1_Paired_All.csv.gz:5743:light",
+      "development_dataset": "difficult"
+    },
+    {
+      "id": "public_fr1_21",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr1",
+      "length": 25,
+      "source": "SAbDab2",
+      "source_id": "H0626",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr1_22",
+      "chain": "L",
+      "light_subtype": "kappa",
+      "frame": "fr1",
+      "length": 23,
+      "source": "SAbDab2",
+      "source_id": "L02K7",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr1_23",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr1",
+      "length": 25,
+      "source": "SAbDab2",
+      "source_id": "H03HS",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr1_24",
+      "chain": "L",
+      "light_subtype": "kappa",
+      "frame": "fr1",
+      "length": 23,
+      "source": "OAS",
+      "source_id": "Wang_2023/csv_paired/SRR24716320_1_Paired_All.csv.gz:421:light",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr1_25",
+      "chain": "L",
+      "light_subtype": "kappa",
+      "frame": "fr1",
+      "length": 23,
+      "source": "SAbDab2",
+      "source_id": "L04RS",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr1_26",
+      "chain": "L",
+      "light_subtype": "lambda",
+      "frame": "fr1",
+      "length": 22,
+      "source": "SAbDab2",
+      "source_id": "L03NG",
+      "development_dataset": "difficult"
+    },
+    {
+      "id": "public_fr1_27",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr1",
+      "length": 25,
+      "source": "SAbDab2",
+      "source_id": "H04Q9",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr1_28",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr1",
+      "length": 25,
+      "source": "SAbDab2",
+      "source_id": "H00VM",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr1_29",
+      "chain": "L",
+      "light_subtype": "kappa",
+      "frame": "fr1",
+      "length": 23,
+      "source": "SAbDab2",
+      "source_id": "L02QK",
+      "development_dataset": "difficult"
+    },
+    {
+      "id": "public_fr1_30",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr1",
+      "length": 25,
+      "source": "OAS",
+      "source_id": "McIntire_2024/csv_paired/GSM7286929_1_Paired_All.csv.gz:4486:heavy",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr1_31",
+      "chain": "L",
+      "light_subtype": "kappa",
+      "frame": "fr1",
+      "length": 23,
+      "source": "OAS",
+      "source_id": "Goldstein_2019/csv/SRR9179287_paired.csv.gz:674:light",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr1_32",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr1",
+      "length": 25,
+      "source": "OAS",
+      "source_id": "Jaffe_2022/csv/1279060_1_Paired_All.csv.gz:843:heavy",
+      "development_dataset": "difficult"
+    },
+    {
+      "id": "public_fr1_33",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr1",
+      "length": 25,
+      "source": "SAbDab2",
+      "source_id": "H05HE",
+      "development_dataset": "difficult"
+    },
+    {
+      "id": "public_fr1_34",
+      "chain": "L",
+      "light_subtype": "lambda",
+      "frame": "fr1",
+      "length": 22,
+      "source": "SAbDab2",
+      "source_id": "L03N6",
+      "development_dataset": "difficult"
+    },
+    {
+      "id": "public_fr1_35",
+      "chain": "L",
+      "light_subtype": "kappa",
+      "frame": "fr1",
+      "length": 23,
+      "source": "SAbDab2",
+      "source_id": "L01P7",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr1_36",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr1",
+      "length": 25,
+      "source": "SAbDab2",
+      "source_id": "H05Z7",
+      "development_dataset": "difficult"
+    },
+    {
+      "id": "public_fr1_37",
+      "chain": "L",
+      "light_subtype": "lambda",
+      "frame": "fr1",
+      "length": 22,
+      "source": "SAbDab2",
+      "source_id": "L02WB",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr1_38",
+      "chain": "L",
+      "light_subtype": "lambda",
+      "frame": "fr1",
+      "length": 22,
+      "source": "SAbDab2",
+      "source_id": "L04JX",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr1_39",
+      "chain": "L",
+      "light_subtype": "kappa",
+      "frame": "fr1",
+      "length": 23,
+      "source": "SAbDab2",
+      "source_id": "L03WR",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr1_40",
+      "chain": "L",
+      "light_subtype": "kappa",
+      "frame": "fr1",
+      "length": 23,
+      "source": "SAbDab2",
+      "source_id": "L00T1",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr1_41",
+      "chain": "L",
+      "light_subtype": "lambda",
+      "frame": "fr1",
+      "length": 22,
+      "source": "SAbDab2",
+      "source_id": "L02SA",
+      "development_dataset": "difficult"
+    },
+    {
+      "id": "public_fr1_42",
+      "chain": "L",
+      "light_subtype": "kappa",
+      "frame": "fr1",
+      "length": 23,
+      "source": "SAbDab2",
+      "source_id": "L0373",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr1_43",
+      "chain": "L",
+      "light_subtype": "kappa",
+      "frame": "fr1",
+      "length": 22,
+      "source": "SAbDab2",
+      "source_id": "L01V0",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr1_44",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr1",
+      "length": 25,
+      "source": "SAbDab2",
+      "source_id": "H01F9",
+      "development_dataset": "difficult"
+    },
+    {
+      "id": "public_fr1_45",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr1",
+      "length": 25,
+      "source": "SAbDab2",
+      "source_id": "H03TG",
+      "development_dataset": "difficult"
+    },
+    {
+      "id": "public_fr1_46",
+      "chain": "L",
+      "light_subtype": "lambda",
+      "frame": "fr1",
+      "length": 22,
+      "source": "SAbDab2",
+      "source_id": "L00MQ",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr1_47",
+      "chain": "L",
+      "light_subtype": "lambda",
+      "frame": "fr1",
+      "length": 22,
+      "source": "SAbDab2",
+      "source_id": "L02C3",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr1_48",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr1",
+      "length": 25,
+      "source": "SAbDab2",
+      "source_id": "H00V5",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr1_49",
+      "chain": "L",
+      "light_subtype": "kappa",
+      "frame": "fr1",
+      "length": 23,
+      "source": "SAbDab2",
+      "source_id": "L01FX",
+      "development_dataset": "difficult"
+    },
+    {
+      "id": "public_fr1_50",
+      "chain": "L",
+      "light_subtype": "kappa",
+      "frame": "fr1",
+      "length": 23,
+      "source": "SAbDab2",
+      "source_id": "L01F2",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr1_51",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr1",
+      "length": 25,
+      "source": "SAbDab2",
+      "source_id": "H03C8",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr1_52",
+      "chain": "L",
+      "light_subtype": "lambda",
+      "frame": "fr1",
+      "length": 21,
+      "source": "SAbDab2",
+      "source_id": "L02NH",
+      "development_dataset": "difficult"
+    },
+    {
+      "id": "public_fr1_53",
+      "chain": "L",
+      "light_subtype": "lambda",
+      "frame": "fr1",
+      "length": 22,
+      "source": "SAbDab2",
+      "source_id": "L03Z3",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr1_54",
+      "chain": "L",
+      "light_subtype": "lambda",
+      "frame": "fr1",
+      "length": 21,
+      "source": "SAbDab2",
+      "source_id": "L0271",
+      "development_dataset": "difficult"
+    },
+    {
+      "id": "public_fr1_55",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr1",
+      "length": 25,
+      "source": "SAbDab2",
+      "source_id": "H00WG",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr1_56",
+      "chain": "L",
+      "light_subtype": "kappa",
+      "frame": "fr1",
+      "length": 22,
+      "source": "SAbDab2",
+      "source_id": "L00VW",
+      "development_dataset": "difficult"
+    },
+    {
+      "id": "public_fr1_57",
+      "chain": "L",
+      "light_subtype": "lambda",
+      "frame": "fr1",
+      "length": 22,
+      "source": "SAbDab2",
+      "source_id": "L0256",
+      "development_dataset": "difficult"
+    },
+    {
+      "id": "public_fr1_58",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr1",
+      "length": 25,
+      "source": "SAbDab2",
+      "source_id": "H0488",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr1_59",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr1",
+      "length": 25,
+      "source": "SAbDab2",
+      "source_id": "H02PP",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr1_60",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr1",
+      "length": 25,
+      "source": "SAbDab2",
+      "source_id": "H01CS",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr1_61",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr1",
+      "length": 25,
+      "source": "SAbDab2",
+      "source_id": "H06CX",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr1_62",
+      "chain": "L",
+      "light_subtype": "kappa",
+      "frame": "fr1",
+      "length": 23,
+      "source": "SAbDab2",
+      "source_id": "L00MF",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr1_63",
+      "chain": "L",
+      "light_subtype": "lambda",
+      "frame": "fr1",
+      "length": 22,
+      "source": "SAbDab2",
+      "source_id": "L00Z1",
+      "development_dataset": "difficult"
+    },
+    {
+      "id": "public_fr1_64",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr1",
+      "length": 25,
+      "source": "SAbDab2",
+      "source_id": "H01GE",
+      "development_dataset": "difficult"
+    },
+    {
+      "id": "public_fr1_65",
+      "chain": "L",
+      "light_subtype": "lambda",
+      "frame": "fr1",
+      "length": 20,
+      "source": "SAbDab2",
+      "source_id": "L041P",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr1_66",
+      "chain": "L",
+      "light_subtype": "lambda",
+      "frame": "fr1",
+      "length": 22,
+      "source": "SAbDab2",
+      "source_id": "L02V3",
+      "development_dataset": "difficult"
+    },
+    {
+      "id": "public_fr1_67",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr1",
+      "length": 25,
+      "source": "SAbDab2",
+      "source_id": "H00DS",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr1_68",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr1",
+      "length": 25,
+      "source": "SAbDab2",
+      "source_id": "H030B",
+      "development_dataset": "difficult"
+    },
+    {
+      "id": "public_fr1_69",
+      "chain": "L",
+      "light_subtype": "kappa",
+      "frame": "fr1",
+      "length": 22,
+      "source": "SAbDab2",
+      "source_id": "L03J2",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr1_70",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr1",
+      "length": 25,
+      "source": "SAbDab2",
+      "source_id": "H04HP",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr1_71",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr1",
+      "length": 25,
+      "source": "OAS",
+      "source_id": "Ferreira_2024/csv_paired/SRR27484683_1_Paired_All.csv.gz:3776:heavy",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr1_72",
+      "chain": "L",
+      "light_subtype": "lambda",
+      "frame": "fr1",
+      "length": 22,
+      "source": "OAS",
+      "source_id": "Ferreira_2024/csv_paired/SRR27484683_1_Paired_All.csv.gz:85:light",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr1_73",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr1",
+      "length": 25,
+      "source": "OAS",
+      "source_id": "Wang_2023/csv_paired/SRR24716320_1_Paired_All.csv.gz:1768:heavy",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr1_74",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr1",
+      "length": 25,
+      "source": "OAS",
+      "source_id": "Ferreira_2024/csv_paired/SRR27484695_1_Paired_All.csv.gz:2398:heavy",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr1_75",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr1",
+      "length": 23,
+      "source": "OAS",
+      "source_id": "Goldstein_2019/csv/SRR9179287_paired.csv.gz:792:heavy",
+      "development_dataset": "difficult"
+    },
+    {
+      "id": "public_fr1_76",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr1",
+      "length": 25,
+      "source": "OAS",
+      "source_id": "Jaffe_2022/csv/1279060_1_Paired_All.csv.gz:1244:heavy",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr1_77",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr1",
+      "length": 25,
+      "source": "OAS",
+      "source_id": "Ferreira_2024/csv_paired/SRR27484683_1_Paired_All.csv.gz:1631:heavy",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr1_78",
+      "chain": "L",
+      "light_subtype": "lambda",
+      "frame": "fr1",
+      "length": 22,
+      "source": "OAS",
+      "source_id": "Ferreira_2024/csv_paired/SRR27484695_1_Paired_All.csv.gz:207:light",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr1_79",
+      "chain": "L",
+      "light_subtype": "kappa",
+      "frame": "fr1",
+      "length": 23,
+      "source": "OAS",
+      "source_id": "Goldstein_2019/csv/SRR9179287_paired.csv.gz:563:light",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr1_80",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr1",
+      "length": 25,
+      "source": "OAS",
+      "source_id": "Jaffe_2022/csv/1279060_1_Paired_All.csv.gz:420:heavy",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr2_81",
+      "chain": "L",
+      "light_subtype": "lambda",
+      "frame": "fr2",
+      "length": 16,
+      "source": "SAbDab2",
+      "source_id": "L0287",
+      "development_dataset": "difficult"
+    },
+    {
+      "id": "public_fr2_82",
+      "chain": "L",
+      "light_subtype": "kappa",
+      "frame": "fr2",
+      "length": 15,
+      "source": "SAbDab2",
+      "source_id": "L01V4",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr2_83",
+      "chain": "L",
+      "light_subtype": "lambda",
+      "frame": "fr2",
+      "length": 15,
+      "source": "OAS",
+      "source_id": "McIntire_2024/csv_paired/GSM7286929_1_Paired_All.csv.gz:3834:light",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr2_84",
+      "chain": "L",
+      "light_subtype": "lambda",
+      "frame": "fr2",
+      "length": 15,
+      "source": "SAbDab2",
+      "source_id": "L00HH",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr2_85",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr2",
+      "length": 14,
+      "source": "SAbDab2",
+      "source_id": "H0626",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr2_86",
+      "chain": "L",
+      "light_subtype": "kappa",
+      "frame": "fr2",
+      "length": 15,
+      "source": "SAbDab2",
+      "source_id": "L04XE",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr2_87",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr2",
+      "length": 14,
+      "source": "SAbDab2",
+      "source_id": "H01RS",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr2_88",
+      "chain": "L",
+      "light_subtype": "lambda",
+      "frame": "fr2",
+      "length": 15,
+      "source": "SAbDab2",
+      "source_id": "L01CD",
+      "development_dataset": "difficult"
+    },
+    {
+      "id": "public_fr2_89",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr2",
+      "length": 14,
+      "source": "SAbDab2",
+      "source_id": "H0488",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr2_90",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr2",
+      "length": 14,
+      "source": "OAS",
+      "source_id": "Goldstein_2019/csv/SRR9179287_paired.csv.gz:427:heavy",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr2_91",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr2",
+      "length": 14,
+      "source": "SAbDab2",
+      "source_id": "H04M8",
+      "development_dataset": "difficult"
+    },
+    {
+      "id": "public_fr2_92",
+      "chain": "L",
+      "light_subtype": "lambda",
+      "frame": "fr2",
+      "length": 15,
+      "source": "OAS",
+      "source_id": "Woodruff_2020/csv/SRR12113364_1_Paired_All.csv.gz:431:light",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr2_93",
+      "chain": "L",
+      "light_subtype": "kappa",
+      "frame": "fr2",
+      "length": 15,
+      "source": "OAS",
+      "source_id": "Goldstein_2019/csv/SRR9179287_paired.csv.gz:891:light",
+      "development_dataset": "difficult"
+    },
+    {
+      "id": "public_fr2_94",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr2",
+      "length": 14,
+      "source": "SAbDab2",
+      "source_id": "H06CX",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr2_95",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr2",
+      "length": 14,
+      "source": "SAbDab2",
+      "source_id": "H050V",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr2_96",
+      "chain": "L",
+      "light_subtype": "lambda",
+      "frame": "fr2",
+      "length": 15,
+      "source": "SAbDab2",
+      "source_id": "L01FE",
+      "development_dataset": "difficult"
+    },
+    {
+      "id": "public_fr2_97",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr2",
+      "length": 14,
+      "source": "SAbDab2",
+      "source_id": "H00V5",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr2_98",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr2",
+      "length": 14,
+      "source": "SAbDab2",
+      "source_id": "H04N5",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr2_99",
+      "chain": "L",
+      "light_subtype": "kappa",
+      "frame": "fr2",
+      "length": 15,
+      "source": "SAbDab2",
+      "source_id": "L02K7",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr2_100",
+      "chain": "L",
+      "light_subtype": "lambda",
+      "frame": "fr2",
+      "length": 15,
+      "source": "OAS",
+      "source_id": "Wang_2023/csv_paired/SRR24716320_1_Paired_All.csv.gz:1698:light",
+      "development_dataset": "difficult"
+    },
+    {
+      "id": "public_fr2_101",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr2",
+      "length": 14,
+      "source": "OAS",
+      "source_id": "Ferreira_2024/csv_paired/SRR27484695_1_Paired_All.csv.gz:207:heavy",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr2_102",
+      "chain": "L",
+      "light_subtype": "lambda",
+      "frame": "fr2",
+      "length": 15,
+      "source": "OAS",
+      "source_id": "Wang_2023/csv_paired/SRR24716320_1_Paired_All.csv.gz:4423:light",
+      "development_dataset": "difficult"
+    },
+    {
+      "id": "public_fr2_103",
+      "chain": "L",
+      "light_subtype": "kappa",
+      "frame": "fr2",
+      "length": 15,
+      "source": "SAbDab2",
+      "source_id": "L01F2",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr2_104",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr2",
+      "length": 14,
+      "source": "SAbDab2",
+      "source_id": "H02PP",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr3_105",
+      "chain": "L",
+      "light_subtype": "lambda",
+      "frame": "fr3",
+      "length": 34,
+      "source": "SAbDab2",
+      "source_id": "L02V3",
+      "development_dataset": "difficult"
+    },
+    {
+      "id": "public_fr3_106",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr3",
+      "length": 29,
+      "source": "SAbDab2",
+      "source_id": "H02AE",
+      "development_dataset": "difficult"
+    },
+    {
+      "id": "public_fr3_107",
+      "chain": "L",
+      "light_subtype": "lambda",
+      "frame": "fr3",
+      "length": 35,
+      "source": "SAbDab2",
+      "source_id": "L00Z1",
+      "development_dataset": "difficult"
+    },
+    {
+      "id": "public_fr3_108",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr3",
+      "length": 31,
+      "source": "SAbDab2",
+      "source_id": "H066M",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr3_109",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr3",
+      "length": 28,
+      "source": "SAbDab2",
+      "source_id": "H03B8",
+      "development_dataset": "difficult"
+    },
+    {
+      "id": "public_fr3_110",
+      "chain": "L",
+      "light_subtype": "kappa",
+      "frame": "fr3",
+      "length": 34,
+      "source": "OAS",
+      "source_id": "McIntire_2024/csv_paired/GSM7286929_1_Paired_All.csv.gz:3518:light",
+      "development_dataset": "difficult"
+    },
+    {
+      "id": "public_fr3_111",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr3",
+      "length": 30,
+      "source": "SAbDab2",
+      "source_id": "H02YS",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr3_112",
+      "chain": "L",
+      "light_subtype": "kappa",
+      "frame": "fr3",
+      "length": 32,
+      "source": "SAbDab2",
+      "source_id": "L01V4",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr3_113",
+      "chain": "L",
+      "light_subtype": "lambda",
+      "frame": "fr3",
+      "length": 32,
+      "source": "SAbDab2",
+      "source_id": "L031G",
+      "development_dataset": "difficult"
+    },
+    {
+      "id": "public_fr3_114",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr3",
+      "length": 30,
+      "source": "SAbDab2",
+      "source_id": "H030B",
+      "development_dataset": "difficult"
+    },
+    {
+      "id": "public_fr3_115",
+      "chain": "L",
+      "light_subtype": "kappa",
+      "frame": "fr3",
+      "length": 32,
+      "source": "SAbDab2",
+      "source_id": "L02K7",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr3_116",
+      "chain": "L",
+      "light_subtype": "lambda",
+      "frame": "fr3",
+      "length": 32,
+      "source": "SAbDab2",
+      "source_id": "L0256",
+      "development_dataset": "difficult"
+    },
+    {
+      "id": "public_fr3_117",
+      "chain": "L",
+      "light_subtype": "lambda",
+      "frame": "fr3",
+      "length": 32,
+      "source": "OAS",
+      "source_id": "McIntire_2024/csv_paired/GSM7286929_1_Paired_All.csv.gz:3834:light",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr3_118",
+      "chain": "L",
+      "light_subtype": "lambda",
+      "frame": "fr3",
+      "length": 32,
+      "source": "SAbDab2",
+      "source_id": "L02NH",
+      "development_dataset": "difficult"
+    },
+    {
+      "id": "public_fr3_119",
+      "chain": "L",
+      "light_subtype": "kappa",
+      "frame": "fr3",
+      "length": 32,
+      "source": "SAbDab2",
+      "source_id": "L02D3",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr3_120",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr3",
+      "length": 30,
+      "source": "OAS",
+      "source_id": "Wang_2023/csv_paired/SRR24716320_1_Paired_All.csv.gz:1503:heavy",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr3_121",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr3",
+      "length": 30,
+      "source": "OAS",
+      "source_id": "Wang_2023/csv_paired/SRR24716320_1_Paired_All.csv.gz:1289:heavy",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr3_122",
+      "chain": "L",
+      "light_subtype": "lambda",
+      "frame": "fr3",
+      "length": 32,
+      "source": "OAS",
+      "source_id": "Ferreira_2024/csv_paired/SRR27484695_1_Paired_All.csv.gz:718:light",
+      "development_dataset": "difficult"
+    },
+    {
+      "id": "public_fr3_123",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr3",
+      "length": 30,
+      "source": "SAbDab2",
+      "source_id": "H04TN",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr3_124",
+      "chain": "L",
+      "light_subtype": "kappa",
+      "frame": "fr3",
+      "length": 32,
+      "source": "SAbDab2",
+      "source_id": "L02GM",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr3_125",
+      "chain": "L",
+      "light_subtype": "lambda",
+      "frame": "fr3",
+      "length": 32,
+      "source": "OAS",
+      "source_id": "Woodruff_2020/csv/SRR12113364_1_Paired_All.csv.gz:629:light",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr3_126",
+      "chain": "L",
+      "light_subtype": "kappa",
+      "frame": "fr3",
+      "length": 32,
+      "source": "OAS",
+      "source_id": "Goldstein_2019/csv/SRR9179287_paired.csv.gz:191:light",
+      "development_dataset": "difficult"
+    },
+    {
+      "id": "public_fr3_127",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr3",
+      "length": 30,
+      "source": "OAS",
+      "source_id": "Jaffe_2022/csv/1279060_1_Paired_All.csv.gz:843:heavy",
+      "development_dataset": "difficult"
+    },
+    {
+      "id": "public_fr3_128",
+      "chain": "L",
+      "light_subtype": "lambda",
+      "frame": "fr3",
+      "length": 32,
+      "source": "SAbDab2",
+      "source_id": "L01A3",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr3_129",
+      "chain": "L",
+      "light_subtype": "lambda",
+      "frame": "fr3",
+      "length": 32,
+      "source": "SAbDab2",
+      "source_id": "L02YC",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr3_130",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr3",
+      "length": 30,
+      "source": "SAbDab2",
+      "source_id": "H00VM",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr3_131",
+      "chain": "L",
+      "light_subtype": "lambda",
+      "frame": "fr3",
+      "length": 32,
+      "source": "SAbDab2",
+      "source_id": "L00HH",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr3_132",
+      "chain": "L",
+      "light_subtype": "kappa",
+      "frame": "fr3",
+      "length": 32,
+      "source": "SAbDab2",
+      "source_id": "L0373",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr3_133",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr3",
+      "length": 30,
+      "source": "SAbDab2",
+      "source_id": "H050V",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr3_134",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr3",
+      "length": 30,
+      "source": "OAS",
+      "source_id": "Goldstein_2019/csv/SRR9179299_paired.csv.gz:2242:heavy",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr3_135",
+      "chain": "L",
+      "light_subtype": "lambda",
+      "frame": "fr3",
+      "length": 32,
+      "source": "OAS",
+      "source_id": "Ferreira_2024/csv_paired/SRR27484695_1_Paired_All.csv.gz:1239:light",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr3_136",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr3",
+      "length": 30,
+      "source": "OAS",
+      "source_id": "Goldstein_2019/csv/SRR9179287_paired.csv.gz:739:heavy",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr4_137",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr4",
+      "length": 10,
+      "source": "SAbDab2",
+      "source_id": "H02N2",
+      "development_dataset": "difficult"
+    },
+    {
+      "id": "public_fr4_138",
+      "chain": "L",
+      "light_subtype": "kappa",
+      "frame": "fr4",
+      "length": 10,
+      "source": "SAbDab2",
+      "source_id": "L00VW",
+      "development_dataset": "difficult"
+    },
+    {
+      "id": "public_fr4_139",
+      "chain": "L",
+      "light_subtype": "kappa",
+      "frame": "fr4",
+      "length": 9,
+      "source": "OAS",
+      "source_id": "McIntire_2024/csv_paired/GSM6504718_1_Paired_All.csv.gz:1175:light",
+      "development_dataset": "difficult"
+    },
+    {
+      "id": "public_fr4_140",
+      "chain": "L",
+      "light_subtype": "lambda",
+      "frame": "fr4",
+      "length": 10,
+      "source": "OAS",
+      "source_id": "Wang_2023/csv_paired/SRR24716320_1_Paired_All.csv.gz:5743:light",
+      "development_dataset": "difficult"
+    },
+    {
+      "id": "public_fr4_141",
+      "chain": "L",
+      "light_subtype": "lambda",
+      "frame": "fr4",
+      "length": 9,
+      "source": "OAS",
+      "source_id": "Woodruff_2020/csv/SRR12113364_1_Paired_All.csv.gz:431:light",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr4_142",
+      "chain": "L",
+      "light_subtype": "lambda",
+      "frame": "fr4",
+      "length": 10,
+      "source": "SAbDab2",
+      "source_id": "L035M",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr4_143",
+      "chain": "L",
+      "light_subtype": "kappa",
+      "frame": "fr4",
+      "length": 10,
+      "source": "OAS",
+      "source_id": "McIntire_2024/csv_paired/GSM6504718_1_Paired_All.csv.gz:413:light",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr4_144",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr4",
+      "length": 11,
+      "source": "OAS",
+      "source_id": "Wang_2023/csv_paired/SRR24716320_1_Paired_All.csv.gz:3836:heavy",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr4_145",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr4",
+      "length": 11,
+      "source": "SAbDab2",
+      "source_id": "H04W4",
+      "development_dataset": "difficult"
+    },
+    {
+      "id": "public_fr4_146",
+      "chain": "L",
+      "light_subtype": "kappa",
+      "frame": "fr4",
+      "length": 10,
+      "source": "SAbDab2",
+      "source_id": "L04RS",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr4_147",
+      "chain": "L",
+      "light_subtype": "kappa",
+      "frame": "fr4",
+      "length": 10,
+      "source": "SAbDab2",
+      "source_id": "L03WR",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr4_148",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr4",
+      "length": 11,
+      "source": "SAbDab2",
+      "source_id": "H00DS",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr4_149",
+      "chain": "L",
+      "light_subtype": "kappa",
+      "frame": "fr4",
+      "length": 10,
+      "source": "SAbDab2",
+      "source_id": "L038Y",
+      "development_dataset": "difficult"
+    },
+    {
+      "id": "public_fr4_150",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr4",
+      "length": 11,
+      "source": "SAbDab2",
+      "source_id": "H04M8",
+      "development_dataset": "difficult"
+    },
+    {
+      "id": "public_fr4_151",
+      "chain": "H",
+      "light_subtype": null,
+      "frame": "fr4",
+      "length": 11,
+      "source": "OAS",
+      "source_id": "Ferreira_2024/csv_paired/SRR27484683_1_Paired_All.csv.gz:3068:heavy",
+      "development_dataset": "representative"
+    },
+    {
+      "id": "public_fr4_152",
+      "chain": "L",
+      "light_subtype": "lambda",
+      "frame": "fr4",
+      "length": 10,
+      "source": "SAbDab2",
+      "source_id": "L00R7",
+      "development_dataset": "difficult"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "schema": "browser_algorithm_bundle_v1",
+  "release": "2026.11.17",
+  "files": {
+    "src/antibody_numbering/engine.py": "432ae6d4d2566f74bad114dc3a44848257ff3cda61fd2972112fe800b0c64cd0",
+    "src/antibody_numbering/__init__.py": "de77d8a54733ae8fc0c54cb8aaafaf0619c28fccd15945daf803780942019d10",
+    "scripts/number_antibodies_independent.py": "d58c3c5c994ea56fe19b4eb13b00e2d0e4e87c7badbbd41159020c2021c75039",
+    "data/reference/independent_numbering_public_20261109/framework_templates.json": "54239346cde4717bdcb0832d3a0b4f5282d7276ebe24b8170c76653b0c717f10",
+    "web/browser_exports.py": "e39db1b7f7e57b8e73bd6ba034e88ffb0ed60ce1c8a0ea30840e3706d4ec4db3",
+    "web/cdr_definitions.json": "f8b810ba82e288d1c44892e24edcd2b09d09af8cb17688b0331f5187ff5e7e9c"
+  }
+}

@@ -10,6 +10,12 @@ FASTA is passed as a data value, never inserted into Python source. Parsing, num
 
 The application does not load optional frequency tables. Unmapped, skipped, unsupported, and unclassified statuses follow the CLI. Output files match the CLI; manifest timestamps and virtual filesystem paths naturally differ. The existing engine's scientific validation scope also applies to the browser app.
 
+## Versioned algorithm bundle
+
+The `2026.11.17` application loads the expanded framework library. Versioned URLs and `algorithm-manifest.json` keep the CLI, engine, framework asset, CDR definitions, and export helper synchronized. Before importing the CLI, Python verifies every loaded asset with SHA-256. A partial/stale deployment reports a refresh error instead of silently mixing resources.
+
+After changing any bundled Python/JSON file, run `python3 scripts/build_browser_manifest.py`, then `python3 scripts/build_browser_manifest.py --check`. The runtime version remains pinned separately.
+
 ## Local preview
 
 From the repository root:

@@ -154,16 +154,16 @@ flowchart LR
     F --> G[CSV and JSON outputs]
 ```
 
-1. **Locate the variable-domain framework.** Candidate segments are evaluated using conserved-residue evidence, length constraints, and framework similarity. The selected interpretation provides the heavy/light assignment and a reference framework.
-2. **Align framework residues.** A locally implemented Needleman–Wunsch algorithm maps the input framework segments to numbered reference positions, with explicit handling for supported terminal truncations.
-3. **Compute loop labels.** Scheme-specific rules use chain type, light-chain subtype, loop length, and terminal completeness to assign loop positions and supported insertion labels.
-4. **Export the mappings.** All five schemes are written with processing status and provenance. Optional frequency annotation is applied after numbering and does not influence the assignments.
+1. **Locate and score framework hypotheses.** Search heavy-, kappa-, and lambda-chain interpretations using conserved-anchor evidence, supported segment lengths, and framework similarity.
+2. **Match a curated framework library.** Five masked base frameworks are complemented by **152 public framework fragments**: 80 FR1, 24 FR2, 32 FR3, and 16 FR4 fragments. Candidate FR4 windows are scored beyond their first motif.
+3. **Generate framework coordinates.** Align supported framework segments, apply chain/length-specific FR3 paths, and convert **38 framework coordinate paths** across the five schemes.
+4. **Compute loop labels and export.** Explicit chain/subtype/length rules assign loop positions and insertion labels. The CLI preserves input coordinates, statuses, hashes, and optional frequency annotations.
 
-The five public templates comprise two VH and three VL frameworks from **6VJA, 6XDG, 1N8Z, and 2VIR**. Their loop sequences are masked and their loop labels are removed. These are development references; they are not an independent validation set.
+Framework fragments and coordinate labels were curated from opened public SAbDab2/OAS examples with cached abYsis mappings. Runtime inference uses the bundled library and locally implemented rules; it does not call ANARCI/ANARCII, HMMER, neural weights, network services, or a whole-query answer cache. No neural training is required. Reference-library construction and heuristic thresholds were calibrated during development.
 
-Inference uses no ANARCI/ANARCII imports, HMMER calls, neural weights, or per-query website numbering responses. No training step is required. The internal alignment score is a selection score, not a calibrated confidence estimate.
+Internal scores rank candidate interpretations; they are not correctness probabilities. Internal loop spans may include flanking residues, while browser CDR colors follow the independently selected CDR definition.
 
-For a function-by-function walkthrough, scoring details, coordinate conventions, and compatibility behavior, see the [implementation guide](docs/algorithm.md) and the annotated [core engine](src/antibody_numbering/engine.py).
+See the [implementation guide](docs/algorithm.md), [validation record](docs/validation.md), and annotated [core engine](src/antibody_numbering/engine.py).
 
 ## Python integration
 
@@ -201,11 +201,20 @@ Run the bundled test suite without additional dependencies:
 python3 -B -S -m unittest discover -s tests -v
 ```
 
-The current suite contains **25 tests** covering alignment, insertion labels, kappa/lambda-specific rules, terminal truncation, unknown residues, negative controls, offline inference, frequency arithmetic, default framework resolution, custom reference overrides, output-directory protection, CDR-region projection, and safe per-sequence ZIP exports.
+The current suite contains **33 tests** covering framework indels, false FR4-like motifs inside CDR3, short loops, aromatic anchor variants, terminal truncation, unknown residues, negative controls, exact packed scoring, offline inference, frequency arithmetic, CLI overrides, CDR-region projection, and per-sequence ZIP exports.
 
-**Current scope:** single antibody variable domains within the implemented framework and loop-length rules. Extreme loop lengths, unusual framework insertions or deletions, divergent sequences, and multidomain constructs may be rejected or assigned incorrectly. The bundled tests provide regression coverage, not a population-level accuracy estimate.
+| Fixed abYsis comparison | Kabat | Chothia | IMGT | Martin | AHo |
+| :--- | ---: | ---: | ---: | ---: | ---: |
+| Representative: reference-numbered inputs | 197/197 | 197/197 | 197/197 | 197/197 | 197/197 |
+| Enriched difficult: reference-numbered inputs | 91/95 | 91/95 | 91/95 | 91/95 | 89/95 |
 
-A legacy abYsis AHo conversion behavior for a particular 19-residue H2 segment is intentionally reproduced: only part of the mapping is returned. Such cases are recorded in `compatibility_notes`. Review these notes before using partial mappings in downstream analyses.
+These are **development compatibility results on opened fixed sets**. The representative set contains 200 inputs (3 unnumbered by the reference); the difficult set contains 100 (5 unnumbered). Reference-unclassified inputs are tracked separately. These cohorts informed library/rule development and are not an untouched accuracy estimate.
+
+All 184 original regression records retain their numbering/rejection behavior. Corrected negative controls (1,000 records) receive no numbering. An additional 12,500-input engineering/peer audit completed without runtime errors. Detailed denominators, coverage differences, auxiliary-tool results, and reproducibility hashes are in [validation.md](docs/validation.md) and [validation_summary.json](docs/validation_summary.json).
+
+**Current scope:** one antibody variable domain per record, within the supported framework and loop-length rules. Rare scaffolds such as shark VNAR, extreme loops, unusual indels, and multidomain constructs remain coverage limits.
+
+For supported heavy second-segment lengths >=19, a verified legacy abYsis AHo conversion returns a partial mapping. This compatibility behavior is retained with explicit `compatibility_notes` and blank suffix positions.
 
 ## Repository layout
 

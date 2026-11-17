@@ -18,6 +18,12 @@ Each template provides a sequence, chain/subtype metadata, framework segment bou
 
 These are development references, not independent holdout controls. They neither require a new antibody to have the same target nor restrict numbering to antibodies from those complexes. Source statements remain embedded in the JSON.
 
+## Expanded library (2026-11-17)
+
+The same v2 asset additionally contains `framework_profiles` (152 public framework fragments) and `framework_position_paths` (38 five-scheme coordinate paths). Fragments are FR1/FR2/FR3/FR4 pieces, not complete antibodies or CDR answer sequences. Each retains chain/locus, labels, source, and public source ID.
+
+The library was curated from opened SAbDab2/OAS development examples with cached abYsis annotations. Selection checks annotation consistency, covers new label topologies, and uses 0.86 positional identity for sequence coverage; runtime scoring uses independent alignment thresholds. See [framework_library_provenance.json](framework_library_provenance.json), [algorithm.md](../../docs/algorithm.md), and [validation.md](../../docs/validation.md). Original base templates and optional frequency snapshots are retained.
+
 ## Frequency snapshots
 
 `abysis_frequencies_all_20261105/` and `independent_numbering_frequencies_20261109/` contain JSON tables named by scheme and public position, for example `kabat_H1.json`. The source is [abYsis](http://www.abysis.org/abysis/). Each table retains:

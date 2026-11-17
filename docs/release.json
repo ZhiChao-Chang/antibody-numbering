@@ -1,0 +1,15 @@
+{
+  "release": "2026.11.17",
+  "validated_candidate_engine_sha256": "21857b7ede01bf11f8840494db693a1956e0cfe27e254e4aef43a005d21b7ac5",
+  "published_engine_sha256": "432ae6d4d2566f74bad114dc3a44848257ff3cda61fd2972112fe800b0c64cd0",
+  "framework_asset_sha256": "54239346cde4717bdcb0832d3a0b4f5282d7276ebe24b8170c76653b0c717f10",
+  "executable_ast_equal_to_validated_candidate": true,
+  "source_changes_since_candidate": "Documentation/comment corrections only; executable AST unchanged after stripping docstrings.",
+  "reference_library": {
+    "base_frameworks": 5,
+    "fragments": 152,
+    "coordinate_paths": 38
+  },
+  "inference_dependencies": "Python standard library; browser uses the existing pinned Pyodide runtime",
+  "validation_summary": "validation_summary.json"
+}
