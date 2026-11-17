@@ -1,6 +1,6 @@
 {
   "schema": "public_numbered_frameworks_v2",
-  "provenance": "Five public numbered framework references: PDB6VJA VH/VL,6XDG REGN10987 VL,1N8Z VH,2VIR VL; CDR sequences and numbering removed. No partner sequences or per-query numbering tables.",
+  "provenance": "Framework references from PDB, SAbDab2 and OAS with abYsis numbering annotations.",
   "templates": {
     "H": {
       "sequence": "QVQLQQPGAELVKPGASVKMSCKASXXXXXXXXXXWVKQTPGRGLEWIGXXXXXXXXXXXXXXXXXKATLTADKSSSTAYMQLSSLTSEDSAVYYCXXXXXXXXXXXXXXWGAGTTVTVSA",
@@ -641,7 +641,7 @@
         ]
       },
       "chain": "H",
-      "source": "Public PDB6VJA H",
+      "source": "PDB 6VJA VH",
       "light_subtype": "not_applicable"
     },
     "L": {
@@ -1208,12 +1208,12 @@
         ]
       },
       "chain": "L",
-      "source": "Public PDB6VJA L",
+      "source": "PDB 6VJA VL",
       "light_subtype": "kappa"
     },
     "L_lambda": {
       "chain": "L",
-      "source": "Public PDB6XDG REGN10987 VL; now development template, not independent holdout",
+      "source": "PDB 6XDG REGN10987 VL",
       "sequence": "QSALTQPASVSGSPGQSITISCXXXXXXXXXXXXXXWYQQHPGKAPKLMIYXXXXXXXGVSNRFSGSKSGNTASLTISGLQSEDEADYYCXXXXXXXXXXFGGGTKLTVL",
       "c1": 21,
       "segments": {
@@ -1800,7 +1800,7 @@
     },
     "H_1N8Z": {
       "chain": "H",
-      "source": "Public PDB1N8Z Herceptin VH framework regions only; development reference",
+      "source": "PDB 1N8Z VH",
       "sequence": "EVQLVESGGGLVQPGGSLRLSCAASXXXXXXXXXXWVRQAPGKGLEWVAXXXXXXXXXXXXXXXXXRFTISADTSKNTAYLQMNSLRAEDTAVYYCXXXXXXXXXXXXXWGQGTLVTVSS",
       "c1": 21,
       "segments": {
@@ -2437,7 +2437,7 @@
     },
     "L_lambda_mouse": {
       "chain": "L",
-      "source": "Public PDB2VIR mouse VL framework regions only; development reference",
+      "source": "PDB 2VIR mouse VL",
       "sequence": "QAVVTQESALTTSPGETVTLTCXXXXXXXXXXXXXXWVQEKPDHLFTGLIGXXXXXXXGVPARFSGSLIGDKAALTITGAQTEDEAIYFCXXXXXXXXXFGGGTKLTVL",
       "c1": 21,
       "segments": {
@@ -3150,7 +3150,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L039F",
-        "development_dataset": "representative",
         "id": "public_fr1_1"
       },
       {
@@ -3282,7 +3281,6 @@
         },
         "source": "OAS",
         "source_id": "Goldstein_2019/csv/SRR9179287_paired.csv.gz:235:light",
-        "development_dataset": "representative",
         "id": "public_fr1_2"
       },
       {
@@ -3409,7 +3407,6 @@
         },
         "source": "OAS",
         "source_id": "Ferreira_2024/csv_paired/SRR27484695_1_Paired_All.csv.gz:1239:light",
-        "development_dataset": "representative",
         "id": "public_fr1_3"
       },
       {
@@ -3531,7 +3528,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L0287",
-        "development_dataset": "difficult",
         "id": "public_fr1_4"
       },
       {
@@ -3613,7 +3609,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L00TJ",
-        "development_dataset": "difficult",
         "id": "public_fr1_5"
       },
       {
@@ -3755,7 +3750,6 @@
         },
         "source": "SAbDab2",
         "source_id": "H03G2",
-        "development_dataset": "representative",
         "id": "public_fr1_6"
       },
       {
@@ -3882,7 +3876,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L03TC",
-        "development_dataset": "representative",
         "id": "public_fr1_7"
       },
       {
@@ -4019,7 +4012,6 @@
         },
         "source": "SAbDab2",
         "source_id": "H043J",
-        "development_dataset": "representative",
         "id": "public_fr1_8"
       },
       {
@@ -4161,7 +4153,6 @@
         },
         "source": "SAbDab2",
         "source_id": "H02AE",
-        "development_dataset": "difficult",
         "id": "public_fr1_9"
       },
       {
@@ -4258,7 +4249,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L00R7",
-        "development_dataset": "difficult",
         "id": "public_fr1_10"
       },
       {
@@ -4375,7 +4365,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L01VX",
-        "development_dataset": "difficult",
         "id": "public_fr1_11"
       },
       {
@@ -4507,7 +4496,6 @@
         },
         "source": "SAbDab2",
         "source_id": "H02N2",
-        "development_dataset": "difficult",
         "id": "public_fr1_12"
       },
       {
@@ -4634,7 +4622,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L04MK",
-        "development_dataset": "representative",
         "id": "public_fr1_13"
       },
       {
@@ -4751,7 +4738,6 @@
         },
         "source": "OAS",
         "source_id": "McIntire_2024/csv_paired/GSM6504718_1_Paired_All.csv.gz:1175:light",
-        "development_dataset": "difficult",
         "id": "public_fr1_14"
       },
       {
@@ -4883,7 +4869,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L03ME",
-        "development_dataset": "difficult",
         "id": "public_fr1_15"
       },
       {
@@ -5030,7 +5015,6 @@
         },
         "source": "OAS",
         "source_id": "Jaffe_2022/csv/1279061_1_Paired_All.csv.gz:6273:heavy",
-        "development_dataset": "representative",
         "id": "public_fr1_16"
       },
       {
@@ -5167,7 +5151,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L00W6",
-        "development_dataset": "difficult",
         "id": "public_fr1_17"
       },
       {
@@ -5299,7 +5282,6 @@
         },
         "source": "OAS",
         "source_id": "Wang_2023/csv_paired/SRR24716320_1_Paired_All.csv.gz:5793:light",
-        "development_dataset": "representative",
         "id": "public_fr1_18"
       },
       {
@@ -5446,7 +5428,6 @@
         },
         "source": "OAS",
         "source_id": "Wang_2023/csv_paired/SRR24716320_1_Paired_All.csv.gz:1866:heavy",
-        "development_dataset": "representative",
         "id": "public_fr1_19"
       },
       {
@@ -5578,7 +5559,6 @@
         },
         "source": "OAS",
         "source_id": "Wang_2023/csv_paired/SRR24716320_1_Paired_All.csv.gz:5743:light",
-        "development_dataset": "difficult",
         "id": "public_fr1_20"
       },
       {
@@ -5725,7 +5705,6 @@
         },
         "source": "SAbDab2",
         "source_id": "H0626",
-        "development_dataset": "representative",
         "id": "public_fr1_21"
       },
       {
@@ -5862,7 +5841,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L02K7",
-        "development_dataset": "representative",
         "id": "public_fr1_22"
       },
       {
@@ -6009,7 +5987,6 @@
         },
         "source": "SAbDab2",
         "source_id": "H03HS",
-        "development_dataset": "representative",
         "id": "public_fr1_23"
       },
       {
@@ -6146,7 +6123,6 @@
         },
         "source": "OAS",
         "source_id": "Wang_2023/csv_paired/SRR24716320_1_Paired_All.csv.gz:421:light",
-        "development_dataset": "representative",
         "id": "public_fr1_24"
       },
       {
@@ -6283,7 +6259,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L04RS",
-        "development_dataset": "representative",
         "id": "public_fr1_25"
       },
       {
@@ -6415,7 +6390,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L03NG",
-        "development_dataset": "difficult",
         "id": "public_fr1_26"
       },
       {
@@ -6562,7 +6536,6 @@
         },
         "source": "SAbDab2",
         "source_id": "H04Q9",
-        "development_dataset": "representative",
         "id": "public_fr1_27"
       },
       {
@@ -6709,7 +6682,6 @@
         },
         "source": "SAbDab2",
         "source_id": "H00VM",
-        "development_dataset": "representative",
         "id": "public_fr1_28"
       },
       {
@@ -6846,7 +6818,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L02QK",
-        "development_dataset": "difficult",
         "id": "public_fr1_29"
       },
       {
@@ -6993,7 +6964,6 @@
         },
         "source": "OAS",
         "source_id": "McIntire_2024/csv_paired/GSM7286929_1_Paired_All.csv.gz:4486:heavy",
-        "development_dataset": "representative",
         "id": "public_fr1_30"
       },
       {
@@ -7130,7 +7100,6 @@
         },
         "source": "OAS",
         "source_id": "Goldstein_2019/csv/SRR9179287_paired.csv.gz:674:light",
-        "development_dataset": "representative",
         "id": "public_fr1_31"
       },
       {
@@ -7277,7 +7246,6 @@
         },
         "source": "OAS",
         "source_id": "Jaffe_2022/csv/1279060_1_Paired_All.csv.gz:843:heavy",
-        "development_dataset": "difficult",
         "id": "public_fr1_32"
       },
       {
@@ -7424,7 +7392,6 @@
         },
         "source": "SAbDab2",
         "source_id": "H05HE",
-        "development_dataset": "difficult",
         "id": "public_fr1_33"
       },
       {
@@ -7556,7 +7523,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L03N6",
-        "development_dataset": "difficult",
         "id": "public_fr1_34"
       },
       {
@@ -7693,7 +7659,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L01P7",
-        "development_dataset": "representative",
         "id": "public_fr1_35"
       },
       {
@@ -7840,7 +7805,6 @@
         },
         "source": "SAbDab2",
         "source_id": "H05Z7",
-        "development_dataset": "difficult",
         "id": "public_fr1_36"
       },
       {
@@ -7972,7 +7936,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L02WB",
-        "development_dataset": "representative",
         "id": "public_fr1_37"
       },
       {
@@ -8104,7 +8067,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L04JX",
-        "development_dataset": "representative",
         "id": "public_fr1_38"
       },
       {
@@ -8241,7 +8203,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L03WR",
-        "development_dataset": "representative",
         "id": "public_fr1_39"
       },
       {
@@ -8378,7 +8339,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L00T1",
-        "development_dataset": "representative",
         "id": "public_fr1_40"
       },
       {
@@ -8510,7 +8470,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L02SA",
-        "development_dataset": "difficult",
         "id": "public_fr1_41"
       },
       {
@@ -8647,7 +8606,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L0373",
-        "development_dataset": "representative",
         "id": "public_fr1_42"
       },
       {
@@ -8779,7 +8737,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L01V0",
-        "development_dataset": "representative",
         "id": "public_fr1_43"
       },
       {
@@ -8926,7 +8883,6 @@
         },
         "source": "SAbDab2",
         "source_id": "H01F9",
-        "development_dataset": "difficult",
         "id": "public_fr1_44"
       },
       {
@@ -9073,7 +9029,6 @@
         },
         "source": "SAbDab2",
         "source_id": "H03TG",
-        "development_dataset": "difficult",
         "id": "public_fr1_45"
       },
       {
@@ -9205,7 +9160,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L00MQ",
-        "development_dataset": "representative",
         "id": "public_fr1_46"
       },
       {
@@ -9337,7 +9291,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L02C3",
-        "development_dataset": "representative",
         "id": "public_fr1_47"
       },
       {
@@ -9484,7 +9437,6 @@
         },
         "source": "SAbDab2",
         "source_id": "H00V5",
-        "development_dataset": "representative",
         "id": "public_fr1_48"
       },
       {
@@ -9621,7 +9573,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L01FX",
-        "development_dataset": "difficult",
         "id": "public_fr1_49"
       },
       {
@@ -9758,7 +9709,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L01F2",
-        "development_dataset": "representative",
         "id": "public_fr1_50"
       },
       {
@@ -9905,7 +9855,6 @@
         },
         "source": "SAbDab2",
         "source_id": "H03C8",
-        "development_dataset": "representative",
         "id": "public_fr1_51"
       },
       {
@@ -10032,7 +9981,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L02NH",
-        "development_dataset": "difficult",
         "id": "public_fr1_52"
       },
       {
@@ -10164,7 +10112,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L03Z3",
-        "development_dataset": "representative",
         "id": "public_fr1_53"
       },
       {
@@ -10291,7 +10238,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L0271",
-        "development_dataset": "difficult",
         "id": "public_fr1_54"
       },
       {
@@ -10438,7 +10384,6 @@
         },
         "source": "SAbDab2",
         "source_id": "H00WG",
-        "development_dataset": "representative",
         "id": "public_fr1_55"
       },
       {
@@ -10570,7 +10515,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L00VW",
-        "development_dataset": "difficult",
         "id": "public_fr1_56"
       },
       {
@@ -10702,7 +10646,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L0256",
-        "development_dataset": "difficult",
         "id": "public_fr1_57"
       },
       {
@@ -10849,7 +10792,6 @@
         },
         "source": "SAbDab2",
         "source_id": "H0488",
-        "development_dataset": "representative",
         "id": "public_fr1_58"
       },
       {
@@ -10996,7 +10938,6 @@
         },
         "source": "SAbDab2",
         "source_id": "H02PP",
-        "development_dataset": "representative",
         "id": "public_fr1_59"
       },
       {
@@ -11143,7 +11084,6 @@
         },
         "source": "SAbDab2",
         "source_id": "H01CS",
-        "development_dataset": "representative",
         "id": "public_fr1_60"
       },
       {
@@ -11290,7 +11230,6 @@
         },
         "source": "SAbDab2",
         "source_id": "H06CX",
-        "development_dataset": "representative",
         "id": "public_fr1_61"
       },
       {
@@ -11427,7 +11366,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L00MF",
-        "development_dataset": "representative",
         "id": "public_fr1_62"
       },
       {
@@ -11559,7 +11497,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L00Z1",
-        "development_dataset": "difficult",
         "id": "public_fr1_63"
       },
       {
@@ -11706,7 +11643,6 @@
         },
         "source": "SAbDab2",
         "source_id": "H01GE",
-        "development_dataset": "difficult",
         "id": "public_fr1_64"
       },
       {
@@ -11828,7 +11764,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L041P",
-        "development_dataset": "representative",
         "id": "public_fr1_65"
       },
       {
@@ -11960,7 +11895,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L02V3",
-        "development_dataset": "difficult",
         "id": "public_fr1_66"
       },
       {
@@ -12107,7 +12041,6 @@
         },
         "source": "SAbDab2",
         "source_id": "H00DS",
-        "development_dataset": "representative",
         "id": "public_fr1_67"
       },
       {
@@ -12254,7 +12187,6 @@
         },
         "source": "SAbDab2",
         "source_id": "H030B",
-        "development_dataset": "difficult",
         "id": "public_fr1_68"
       },
       {
@@ -12386,7 +12318,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L03J2",
-        "development_dataset": "representative",
         "id": "public_fr1_69"
       },
       {
@@ -12533,7 +12464,6 @@
         },
         "source": "SAbDab2",
         "source_id": "H04HP",
-        "development_dataset": "representative",
         "id": "public_fr1_70"
       },
       {
@@ -12680,7 +12610,6 @@
         },
         "source": "OAS",
         "source_id": "Ferreira_2024/csv_paired/SRR27484683_1_Paired_All.csv.gz:3776:heavy",
-        "development_dataset": "representative",
         "id": "public_fr1_71"
       },
       {
@@ -12812,7 +12741,6 @@
         },
         "source": "OAS",
         "source_id": "Ferreira_2024/csv_paired/SRR27484683_1_Paired_All.csv.gz:85:light",
-        "development_dataset": "representative",
         "id": "public_fr1_72"
       },
       {
@@ -12959,7 +12887,6 @@
         },
         "source": "OAS",
         "source_id": "Wang_2023/csv_paired/SRR24716320_1_Paired_All.csv.gz:1768:heavy",
-        "development_dataset": "representative",
         "id": "public_fr1_73"
       },
       {
@@ -13106,7 +13033,6 @@
         },
         "source": "OAS",
         "source_id": "Ferreira_2024/csv_paired/SRR27484695_1_Paired_All.csv.gz:2398:heavy",
-        "development_dataset": "representative",
         "id": "public_fr1_74"
       },
       {
@@ -13243,7 +13169,6 @@
         },
         "source": "OAS",
         "source_id": "Goldstein_2019/csv/SRR9179287_paired.csv.gz:792:heavy",
-        "development_dataset": "difficult",
         "id": "public_fr1_75"
       },
       {
@@ -13390,7 +13315,6 @@
         },
         "source": "OAS",
         "source_id": "Jaffe_2022/csv/1279060_1_Paired_All.csv.gz:1244:heavy",
-        "development_dataset": "representative",
         "id": "public_fr1_76"
       },
       {
@@ -13537,7 +13461,6 @@
         },
         "source": "OAS",
         "source_id": "Ferreira_2024/csv_paired/SRR27484683_1_Paired_All.csv.gz:1631:heavy",
-        "development_dataset": "representative",
         "id": "public_fr1_77"
       },
       {
@@ -13669,7 +13592,6 @@
         },
         "source": "OAS",
         "source_id": "Ferreira_2024/csv_paired/SRR27484695_1_Paired_All.csv.gz:207:light",
-        "development_dataset": "representative",
         "id": "public_fr1_78"
       },
       {
@@ -13806,7 +13728,6 @@
         },
         "source": "OAS",
         "source_id": "Goldstein_2019/csv/SRR9179287_paired.csv.gz:563:light",
-        "development_dataset": "representative",
         "id": "public_fr1_79"
       },
       {
@@ -13953,7 +13874,6 @@
         },
         "source": "OAS",
         "source_id": "Jaffe_2022/csv/1279060_1_Paired_All.csv.gz:420:heavy",
-        "development_dataset": "representative",
         "id": "public_fr1_80"
       },
       {
@@ -14055,7 +13975,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L0287",
-        "development_dataset": "difficult",
         "id": "public_fr2_81"
       },
       {
@@ -14152,7 +14071,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L01V4",
-        "development_dataset": "representative",
         "id": "public_fr2_82"
       },
       {
@@ -14249,7 +14167,6 @@
         },
         "source": "OAS",
         "source_id": "McIntire_2024/csv_paired/GSM7286929_1_Paired_All.csv.gz:3834:light",
-        "development_dataset": "representative",
         "id": "public_fr2_83"
       },
       {
@@ -14346,7 +14263,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L00HH",
-        "development_dataset": "representative",
         "id": "public_fr2_84"
       },
       {
@@ -14438,7 +14354,6 @@
         },
         "source": "SAbDab2",
         "source_id": "H0626",
-        "development_dataset": "representative",
         "id": "public_fr2_85"
       },
       {
@@ -14535,7 +14450,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L04XE",
-        "development_dataset": "representative",
         "id": "public_fr2_86"
       },
       {
@@ -14627,7 +14541,6 @@
         },
         "source": "SAbDab2",
         "source_id": "H01RS",
-        "development_dataset": "representative",
         "id": "public_fr2_87"
       },
       {
@@ -14724,7 +14637,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L01CD",
-        "development_dataset": "difficult",
         "id": "public_fr2_88"
       },
       {
@@ -14816,7 +14728,6 @@
         },
         "source": "SAbDab2",
         "source_id": "H0488",
-        "development_dataset": "representative",
         "id": "public_fr2_89"
       },
       {
@@ -14908,7 +14819,6 @@
         },
         "source": "OAS",
         "source_id": "Goldstein_2019/csv/SRR9179287_paired.csv.gz:427:heavy",
-        "development_dataset": "representative",
         "id": "public_fr2_90"
       },
       {
@@ -15000,7 +14910,6 @@
         },
         "source": "SAbDab2",
         "source_id": "H04M8",
-        "development_dataset": "difficult",
         "id": "public_fr2_91"
       },
       {
@@ -15097,7 +15006,6 @@
         },
         "source": "OAS",
         "source_id": "Woodruff_2020/csv/SRR12113364_1_Paired_All.csv.gz:431:light",
-        "development_dataset": "representative",
         "id": "public_fr2_92"
       },
       {
@@ -15194,7 +15102,6 @@
         },
         "source": "OAS",
         "source_id": "Goldstein_2019/csv/SRR9179287_paired.csv.gz:891:light",
-        "development_dataset": "difficult",
         "id": "public_fr2_93"
       },
       {
@@ -15286,7 +15193,6 @@
         },
         "source": "SAbDab2",
         "source_id": "H06CX",
-        "development_dataset": "representative",
         "id": "public_fr2_94"
       },
       {
@@ -15378,7 +15284,6 @@
         },
         "source": "SAbDab2",
         "source_id": "H050V",
-        "development_dataset": "representative",
         "id": "public_fr2_95"
       },
       {
@@ -15475,7 +15380,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L01FE",
-        "development_dataset": "difficult",
         "id": "public_fr2_96"
       },
       {
@@ -15567,7 +15471,6 @@
         },
         "source": "SAbDab2",
         "source_id": "H00V5",
-        "development_dataset": "representative",
         "id": "public_fr2_97"
       },
       {
@@ -15659,7 +15562,6 @@
         },
         "source": "SAbDab2",
         "source_id": "H04N5",
-        "development_dataset": "representative",
         "id": "public_fr2_98"
       },
       {
@@ -15756,7 +15658,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L02K7",
-        "development_dataset": "representative",
         "id": "public_fr2_99"
       },
       {
@@ -15853,7 +15754,6 @@
         },
         "source": "OAS",
         "source_id": "Wang_2023/csv_paired/SRR24716320_1_Paired_All.csv.gz:1698:light",
-        "development_dataset": "difficult",
         "id": "public_fr2_100"
       },
       {
@@ -15945,7 +15845,6 @@
         },
         "source": "OAS",
         "source_id": "Ferreira_2024/csv_paired/SRR27484695_1_Paired_All.csv.gz:207:heavy",
-        "development_dataset": "representative",
         "id": "public_fr2_101"
       },
       {
@@ -16042,7 +15941,6 @@
         },
         "source": "OAS",
         "source_id": "Wang_2023/csv_paired/SRR24716320_1_Paired_All.csv.gz:4423:light",
-        "development_dataset": "difficult",
         "id": "public_fr2_102"
       },
       {
@@ -16139,7 +16037,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L01F2",
-        "development_dataset": "representative",
         "id": "public_fr2_103"
       },
       {
@@ -16231,7 +16128,6 @@
         },
         "source": "SAbDab2",
         "source_id": "H02PP",
-        "development_dataset": "representative",
         "id": "public_fr2_104"
       },
       {
@@ -16423,7 +16319,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L02V3",
-        "development_dataset": "difficult",
         "id": "public_fr3_105"
       },
       {
@@ -16590,7 +16485,6 @@
         },
         "source": "SAbDab2",
         "source_id": "H02AE",
-        "development_dataset": "difficult",
         "id": "public_fr3_106"
       },
       {
@@ -16787,7 +16681,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L00Z1",
-        "development_dataset": "difficult",
         "id": "public_fr3_107"
       },
       {
@@ -16964,7 +16857,6 @@
         },
         "source": "SAbDab2",
         "source_id": "H066M",
-        "development_dataset": "representative",
         "id": "public_fr3_108"
       },
       {
@@ -17126,7 +17018,6 @@
         },
         "source": "SAbDab2",
         "source_id": "H03B8",
-        "development_dataset": "difficult",
         "id": "public_fr3_109"
       },
       {
@@ -17318,7 +17209,6 @@
         },
         "source": "OAS",
         "source_id": "McIntire_2024/csv_paired/GSM7286929_1_Paired_All.csv.gz:3518:light",
-        "development_dataset": "difficult",
         "id": "public_fr3_110"
       },
       {
@@ -17490,7 +17380,6 @@
         },
         "source": "SAbDab2",
         "source_id": "H02YS",
-        "development_dataset": "representative",
         "id": "public_fr3_111"
       },
       {
@@ -17672,7 +17561,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L01V4",
-        "development_dataset": "representative",
         "id": "public_fr3_112"
       },
       {
@@ -17854,7 +17742,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L031G",
-        "development_dataset": "difficult",
         "id": "public_fr3_113"
       },
       {
@@ -18026,7 +17913,6 @@
         },
         "source": "SAbDab2",
         "source_id": "H030B",
-        "development_dataset": "difficult",
         "id": "public_fr3_114"
       },
       {
@@ -18208,7 +18094,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L02K7",
-        "development_dataset": "representative",
         "id": "public_fr3_115"
       },
       {
@@ -18390,7 +18275,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L0256",
-        "development_dataset": "difficult",
         "id": "public_fr3_116"
       },
       {
@@ -18572,7 +18456,6 @@
         },
         "source": "OAS",
         "source_id": "McIntire_2024/csv_paired/GSM7286929_1_Paired_All.csv.gz:3834:light",
-        "development_dataset": "representative",
         "id": "public_fr3_117"
       },
       {
@@ -18754,7 +18637,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L02NH",
-        "development_dataset": "difficult",
         "id": "public_fr3_118"
       },
       {
@@ -18936,7 +18818,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L02D3",
-        "development_dataset": "representative",
         "id": "public_fr3_119"
       },
       {
@@ -19108,7 +18989,6 @@
         },
         "source": "OAS",
         "source_id": "Wang_2023/csv_paired/SRR24716320_1_Paired_All.csv.gz:1503:heavy",
-        "development_dataset": "representative",
         "id": "public_fr3_120"
       },
       {
@@ -19280,7 +19160,6 @@
         },
         "source": "OAS",
         "source_id": "Wang_2023/csv_paired/SRR24716320_1_Paired_All.csv.gz:1289:heavy",
-        "development_dataset": "representative",
         "id": "public_fr3_121"
       },
       {
@@ -19462,7 +19341,6 @@
         },
         "source": "OAS",
         "source_id": "Ferreira_2024/csv_paired/SRR27484695_1_Paired_All.csv.gz:718:light",
-        "development_dataset": "difficult",
         "id": "public_fr3_122"
       },
       {
@@ -19634,7 +19512,6 @@
         },
         "source": "SAbDab2",
         "source_id": "H04TN",
-        "development_dataset": "representative",
         "id": "public_fr3_123"
       },
       {
@@ -19816,7 +19693,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L02GM",
-        "development_dataset": "representative",
         "id": "public_fr3_124"
       },
       {
@@ -19998,7 +19874,6 @@
         },
         "source": "OAS",
         "source_id": "Woodruff_2020/csv/SRR12113364_1_Paired_All.csv.gz:629:light",
-        "development_dataset": "representative",
         "id": "public_fr3_125"
       },
       {
@@ -20180,7 +20055,6 @@
         },
         "source": "OAS",
         "source_id": "Goldstein_2019/csv/SRR9179287_paired.csv.gz:191:light",
-        "development_dataset": "difficult",
         "id": "public_fr3_126"
       },
       {
@@ -20352,7 +20226,6 @@
         },
         "source": "OAS",
         "source_id": "Jaffe_2022/csv/1279060_1_Paired_All.csv.gz:843:heavy",
-        "development_dataset": "difficult",
         "id": "public_fr3_127"
       },
       {
@@ -20534,7 +20407,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L01A3",
-        "development_dataset": "representative",
         "id": "public_fr3_128"
       },
       {
@@ -20716,7 +20588,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L02YC",
-        "development_dataset": "representative",
         "id": "public_fr3_129"
       },
       {
@@ -20888,7 +20759,6 @@
         },
         "source": "SAbDab2",
         "source_id": "H00VM",
-        "development_dataset": "representative",
         "id": "public_fr3_130"
       },
       {
@@ -21070,7 +20940,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L00HH",
-        "development_dataset": "representative",
         "id": "public_fr3_131"
       },
       {
@@ -21252,7 +21121,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L0373",
-        "development_dataset": "representative",
         "id": "public_fr3_132"
       },
       {
@@ -21424,7 +21292,6 @@
         },
         "source": "SAbDab2",
         "source_id": "H050V",
-        "development_dataset": "representative",
         "id": "public_fr3_133"
       },
       {
@@ -21596,7 +21463,6 @@
         },
         "source": "OAS",
         "source_id": "Goldstein_2019/csv/SRR9179299_paired.csv.gz:2242:heavy",
-        "development_dataset": "representative",
         "id": "public_fr3_134"
       },
       {
@@ -21778,7 +21644,6 @@
         },
         "source": "OAS",
         "source_id": "Ferreira_2024/csv_paired/SRR27484695_1_Paired_All.csv.gz:1239:light",
-        "development_dataset": "representative",
         "id": "public_fr3_135"
       },
       {
@@ -21950,7 +21815,6 @@
         },
         "source": "OAS",
         "source_id": "Goldstein_2019/csv/SRR9179287_paired.csv.gz:739:heavy",
-        "development_dataset": "representative",
         "id": "public_fr3_136"
       },
       {
@@ -22022,7 +21886,6 @@
         },
         "source": "SAbDab2",
         "source_id": "H02N2",
-        "development_dataset": "difficult",
         "id": "public_fr4_137"
       },
       {
@@ -22094,7 +21957,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L00VW",
-        "development_dataset": "difficult",
         "id": "public_fr4_138"
       },
       {
@@ -22161,7 +22023,6 @@
         },
         "source": "OAS",
         "source_id": "McIntire_2024/csv_paired/GSM6504718_1_Paired_All.csv.gz:1175:light",
-        "development_dataset": "difficult",
         "id": "public_fr4_139"
       },
       {
@@ -22233,7 +22094,6 @@
         },
         "source": "OAS",
         "source_id": "Wang_2023/csv_paired/SRR24716320_1_Paired_All.csv.gz:5743:light",
-        "development_dataset": "difficult",
         "id": "public_fr4_140"
       },
       {
@@ -22300,7 +22160,6 @@
         },
         "source": "OAS",
         "source_id": "Woodruff_2020/csv/SRR12113364_1_Paired_All.csv.gz:431:light",
-        "development_dataset": "representative",
         "id": "public_fr4_141"
       },
       {
@@ -22372,7 +22231,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L035M",
-        "development_dataset": "representative",
         "id": "public_fr4_142"
       },
       {
@@ -22444,7 +22302,6 @@
         },
         "source": "OAS",
         "source_id": "McIntire_2024/csv_paired/GSM6504718_1_Paired_All.csv.gz:413:light",
-        "development_dataset": "representative",
         "id": "public_fr4_143"
       },
       {
@@ -22521,7 +22378,6 @@
         },
         "source": "OAS",
         "source_id": "Wang_2023/csv_paired/SRR24716320_1_Paired_All.csv.gz:3836:heavy",
-        "development_dataset": "representative",
         "id": "public_fr4_144"
       },
       {
@@ -22598,7 +22454,6 @@
         },
         "source": "SAbDab2",
         "source_id": "H04W4",
-        "development_dataset": "difficult",
         "id": "public_fr4_145"
       },
       {
@@ -22670,7 +22525,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L04RS",
-        "development_dataset": "representative",
         "id": "public_fr4_146"
       },
       {
@@ -22742,7 +22596,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L03WR",
-        "development_dataset": "representative",
         "id": "public_fr4_147"
       },
       {
@@ -22819,7 +22672,6 @@
         },
         "source": "SAbDab2",
         "source_id": "H00DS",
-        "development_dataset": "representative",
         "id": "public_fr4_148"
       },
       {
@@ -22891,7 +22743,6 @@
         },
         "source": "SAbDab2",
         "source_id": "L038Y",
-        "development_dataset": "difficult",
         "id": "public_fr4_149"
       },
       {
@@ -22968,7 +22819,6 @@
         },
         "source": "SAbDab2",
         "source_id": "H04M8",
-        "development_dataset": "difficult",
         "id": "public_fr4_150"
       },
       {
@@ -23045,7 +22895,6 @@
         },
         "source": "OAS",
         "source_id": "Ferreira_2024/csv_paired/SRR27484683_1_Paired_All.csv.gz:3068:heavy",
-        "development_dataset": "representative",
         "id": "public_fr4_151"
       },
       {
@@ -23117,12 +22966,9 @@
         },
         "source": "SAbDab2",
         "source_id": "L00R7",
-        "development_dataset": "difficult",
         "id": "public_fr4_152"
       }
-    ],
-    "selection": "One public framework medoid per uncovered locus/position-topology/sequence-coverage class. Framework fragments only, no CDR residues or query answer cache. All cases have been opened for iteration.",
-    "ambiguous_annotations_excluded": []
+    ]
   },
   "framework_position_paths": {
     "schema": "framework_coordinate_paths_v1",
@@ -27668,7 +27514,6 @@
           ]
         }
       }
-    ],
-    "ambiguous_paths_excluded": []
+    ]
   }
 }

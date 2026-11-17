@@ -2,7 +2,7 @@
 // Import the repository's unchanged CLI rather than reimplementing its rules.
 import { loadPyodide } from './runtime/pyodide.mjs';
 
-const ALGORITHM_RELEASE = '2026.11.17';
+const ALGORITHM_RELEASE = '2026.11.17.1';
 let ready;
 async function initialize() {
   self.postMessage({type:'progress', message:'正在加载浏览器 Python 环境（首次约 13 MB）…'});

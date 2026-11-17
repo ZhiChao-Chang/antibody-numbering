@@ -3,7 +3,7 @@
   "defaults": {"imgt": "imgt", "kabat": "kabat", "chothia": "chothia", "martin": "chothia", "aho": "kabat"},
   "default_notes": {
     "martin": "Martin numbering uses the Martin group's 2021 consensus Chothia CDR definition by default.",
-    "aho": "AHo numbering uses Kabat CDRs mapped by normalized residue index by default. This is an explicit application policy, not a claim that AHo uniquely defines Kabat CDRs."
+    "aho": "AHo views default to Kabat CDR regions projected by residue index."
   },
   "definitions": {
     "imgt": {

@@ -29,6 +29,7 @@ class CommandLineTests(unittest.TestCase):
             manifest = json.loads((output / 'manifest.json').read_text())
             self.assertEqual(Path(manifest['public_frameworks']), FRAMEWORK)
             self.assertEqual(manifest['records'], 2)
+            self.assertEqual(manifest['phase'], 'COMPLETED')
             with (output / 'records_summary.csv').open() as stream:
                 summaries = list(csv.DictReader(stream))
             self.assertEqual(len(summaries), 10)

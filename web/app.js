@@ -1,4 +1,4 @@
-const ALGORITHM_RELEASE = '2026.11.17';
+const ALGORITHM_RELEASE = '2026.11.17.1';
 const $ = id => document.getElementById(id);
 let worker, requestId=0, output=null, busy=false;
 const statuses={numbered:'已编号',unsupported:'该编号体系暂不支持',unclassified:'未识别为支持的抗体可变域',unmapped_position:'未映射位置',skipped_stop_character:'跳过：包含终止符 *',skipped_invalid_character:'跳过：包含无效字符',skipped_empty_sequence:'跳过：空序列'};

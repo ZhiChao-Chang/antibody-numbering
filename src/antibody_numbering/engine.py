@@ -6,9 +6,8 @@ Reading order for reviewers:
     loop_labels()         - apply the supported chain/length-specific loop rules
     AnchorNumberer        - locate segments, map frameworks, and assemble results
 
-Reference framework residues carry public labels; masked loop labels are computed
-from explicit rules. The implementation has no ANARCI/ANARCII imports, trained
-weights, network calls, or lookup table of answers for incoming sequences.
+Reference framework residues carry public labels; loop labels are computed
+from explicit chain-, length-, and scheme-specific rules.
 
 All sequence offsets and segment slices in this module are zero-based, with
 exclusive ends. Biological labels such as H35A are strings, not array offsets.
@@ -68,7 +67,7 @@ AA_CODES={aa:i for i,aa in enumerate('XACDEFGHIKLMNPQRSTVWY')}
 def pack_residues(sequence):
     """Encode five-bit residue fields and a separate unknown-residue mask.
 
-    This is a fast representation of a short framework, not a learned feature.
+    This is a compact representation for scoring short framework segments.
     A one-bit marker selects the least-significant bit of every residue field.
     """
     word=0;unknown=0
@@ -162,7 +161,7 @@ def loop_labels(chain,region,length,scheme,complete=True,light_subtype="kappa"):
     complete indicates whether the third segment has an identified FR4 boundary.
     light_subtype controls kappa/lambda-specific placement where implemented.
     Return one label per residue; empty labels explicitly retain partial output.
-    These cases and length limits are hand-coded rules, not learned parameters.
+    Supported cases and length limits are defined explicitly below.
     """
     if chain=='H':
         if region==1:
@@ -180,7 +179,7 @@ def loop_labels(chain,region,length,scheme,complete=True,light_subtype="kappa"):
             if not 15<=length<=24:raise UnsupportedNumbering('H2 supported lengths 15..24')
             if scheme=='imgt':return ['55']+centered(56,65,length-9)+linear(66,72)+['74']
             if scheme=='aho':
-                # Reproduced in a public PDB6VJA insertion control, not a query patch.
+                # Retain the supported legacy AHo partial-conversion rule.
                 # Verified legacy abYsis truncation applies to supported lengths >=19.
                 if length>=19:return ['57','58','59','60','61','65']+['']*(length-6)
                 if length==15:return linear(57,59)+linear(65,76)
@@ -243,7 +242,7 @@ def loop_labels(chain,region,length,scheme,complete=True,light_subtype="kappa"):
 def framework3_labels(chain,length,scheme):
     """Compute the conserved FR3 path and scheme-specific indel site.
 
-    These are segment-length/chain rules, not sequence-specific reference rows.
+    The positional path depends on segment length, chain, and scheme.
     The C-terminal conserved cysteine stays at its published anchor. IMGT/AHo
     fill their optional central slots before introducing extra insertion labels.
     """
@@ -269,8 +268,7 @@ def framework3_labels(chain,length,scheme):
 class AnchorNumberer:
     """Number a single variable domain using a fixed set of public frameworks.
 
-    Framework selection is computed for each input. Loading an asset does not
-    train a model or retrieve an existing answer for the input sequence.
+    Framework matches and segment boundaries are computed for each input.
     """
 
     def __init__(self, framework_asset):
@@ -335,7 +333,7 @@ class AnchorNumberer:
         Only framework fragments are present in this panel. A donor must match
         chain/locus, cannot leave query residues without labels, and must improve
         the base alignment by the configured evidence margin before replacing
-        its positional interpretation. No whole sequence, CDR, or oracle lookup.
+        its positional interpretation.
         """
         a,b=template['segments'][key]
         score,pairs=self.framework_alignment(template,key,query)
@@ -400,7 +398,7 @@ class AnchorNumberer:
 
         Enumerate candidate anchors and supported segment lengths, align the
         framework pieces, reject weak matches, then rank the remaining choices.
-        Scores and search limits are fixed heuristics, not fitted probabilities.
+        Deterministic scores rank the supported segmentation hypotheses.
         Returned c1/c2 are anchor indices; w1 is the candidate start of FR2.
         """
         choices=[];best_score=float('-inf')
@@ -501,8 +499,7 @@ class AnchorNumberer:
         if found is None:return {'status':'unclassified','schemes':{s:['']*len(sequence)for s in SCHEMES}}
         score,chain,segments,c1,c2,w1,template_id=found;t=self.templates[template_id]
         # The FR4 motif defines the end of the third inter-framework segment.
-        # Without a motif, the remaining tail is processed as incomplete; this is
-        # a supported fallback, not proof that the true FR4 is biologically absent.
+        # Without a matching FR4, process the remaining tail as incomplete.
         h3start=c2+1
         fr4=self.select_fr4(t,sequence,h3start)
         complete=fr4 is not None

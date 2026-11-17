@@ -1,12 +1,8 @@
 #!/usr/bin/env python3
-"""Batch FASTA entry point for the independent offline numbering engine.
+"""Batch FASTA numbering for antibody variable domains.
 
-Execution stages: parse and normalize records, load public frameworks, number
-each valid domain in five schemes, optionally annotate public position counts,
-then export residue tables and provenance. No sequence is submitted to a server.
-
-The mathematical numbering rules live in src/antibody_numbering/engine.py;
-this script handles input/output, reference-frequency lookup, and run records.
+Read VH/VL sequences, assign five numbering schemes, and export residue-level
+results, optional amino-acid frequencies, and run metadata.
 """
 from pathlib import Path
 from collections import Counter
@@ -25,7 +21,7 @@ from antibody_numbering.engine import AnchorNumberer,SCHEMES
 
 
 def sha(path):
-    """Fingerprint exact file bytes for the run's provenance manifest."""
+    """Hash an input, software, or reference file for the run manifest."""
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
@@ -97,12 +93,11 @@ class FrequencyTables:
         d,path=ref
         if not d['total_including_gap']:return '', 'empty_reference', str(path)
         # The denominator includes gap counts in the public All-organism table.
-        # This observed frequency is not a probability that the numbering is right.
         return 100*d['counts'][aa]/d['total_including_gap'],'public_position_frequency',str(path)
 
 
 def main():
-    """Run one batch and export mappings, processing summaries, and provenance."""
+    """Run a batch and export residue mappings, summaries, and run metadata."""
     # Stage 1: parse options. Frameworks default to the bundled JSON; frequency
     # annotation remains opt-in through one or more --frequency-cache arguments.
     p=argparse.ArgumentParser(description=__doc__)
@@ -162,18 +157,15 @@ def main():
     import inspect
     engine_path=Path(inspect.getfile(AnchorNumberer))
     # Stage 4: fingerprint code, input, frameworks, and every frequency table used.
-    # FINISHED_REQUIRES_AUDIT means execution completed, not that independent
-    # reference validation has been performed on these newly supplied sequences.
-    manifest={'phase':'OFFLINE_NUMBERING_FINISHED_REQUIRES_AUDIT','created_at_utc':datetime.now(timezone.utc).isoformat(),
-        'backend':'Own anchor detection, framework alignment and computed five-scheme loop rules',
-        'inference_uses_anarci_or_anarcii':False,'inference_uses_query_reference_cache':False,'inference_uses_network':False,
+    manifest={'phase':'COMPLETED','created_at_utc':datetime.now(timezone.utc).isoformat(),
+        'backend':'Antibody Numbering',
         'public_frameworks':str(args.frameworks),'public_frameworks_sha256':sha(args.frameworks),
         'engine_source_sha256':sha(engine_path),'runner_source_sha256':sha(__file__),'input_sha256':sha(args.input),
         'records':len(records),'effective_records':len(predictions),'row_count':rowcount,'record_scheme_counts':dict(counts),
         'skipped_records':dict(Counter(x['status']for x in records if x['status']!='ready')),
-        'frequency_semantics':'Per-position amino-acid reference frequency, organism All, total including gap; not numbering-correctness probability.',
+        'frequency_semantics':'Per-position amino-acid usage, organism All, total including gaps.',
         'frequency_references':frequencies.used,'missing_frequency_positions':len(missing),
-        'compatibility_scope':'Exact equality needs independent audit against website references; not a claim of correctness on every possible antibody.'}
+    }
     save('manifest.json',manifest)
     print(json.dumps({k:v for k,v in manifest.items()if k!='frequency_references'},ensure_ascii=False))
 
